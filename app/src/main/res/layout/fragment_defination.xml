@@ -1,14 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".defination.DefinationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="definitionViewModel"
+            type="com.example.chakmadictionary.ui.DefinitionViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.DefinationFragment">
 
-</FrameLayout>
+        <TextView
+        android:id="@+id/wordName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{definitionViewModel.myWord.word}"
+        tools:text="Word"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <TextView
+        android:id="@+id/translationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Translation"
+        app:layout_constraintEnd_toEndOf="@+id/wordName"
+        android:textSize="20sp"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="@+id/wordName"
+        app:layout_constraintTop_toBottomOf="@+id/wordName" />
+
+    <TextView
+        android:id="@+id/translationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:text="Sobdo"
+        android:text="@{definitionViewModel.myWord.translation}"
+        app:layout_constraintEnd_toEndOf="@+id/translationLabel"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="@+id/translationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/translationLabel" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/translationText"
+        app:layout_constraintTop_toBottomOf="@+id/translationText"
+        app:srcCompat="@drawable/sound_icon_foreground" />
+
+    <TextView
+        android:id="@+id/wordPronunciation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="pronounce"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/translationText" />
+
+    <TextView
+        android:id="@+id/definationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Definition"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/definationText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="6dp"
+        android:inputType="textMultiLine"
+        android:text="@{definitionViewModel.myWord.definition}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/definationLabel"
+        app:layout_constraintTop_toBottomOf="@+id/definationLabel" />
+
+    <TextView
+        android:id="@+id/exampleSentencesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Example Sentences"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/definationText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/definationText"
+        app:layout_constraintTop_toBottomOf="@+id/definationText" />
+
+    <TextView
+        android:id="@+id/exampleSentences"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType=""
+        tools:text="@string/exampleSentenceOne"
+        android:text="@{definitionViewModel.myWord.example}"
+        app:layout_constraintEnd_toEndOf="@+id/definationText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/exampleSentencesLabel"
+        app:layout_constraintTop_toBottomOf="@+id/exampleSentencesLabel" />
+
+    <TextView
+        android:id="@+id/synonymsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        tools:text="Synonyms"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/exampleSentences"
+        app:layout_constraintTop_toBottomOf="@+id/exampleSentences" />
+
+    <TextView
+        android:id="@+id/synonymsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:text="Term"
+        android:text="Not yet implemented"
+        app:layout_constraintStart_toStartOf="@+id/synonymsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/synonymsLabel" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
