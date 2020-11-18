@@ -1,6 +1,7 @@
 package com.example.chakmadictionary.ui
 
 import android.app.Application
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
@@ -52,6 +53,18 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
         }.addOnFailureListener {
             Timber.d("Error getting documents : $it")
         }
+    }
+
+    val handled=MutableLiveData<Boolean>()
+    init {
+        handled.value=false
+    }
+
+     fun handleSuggestionIntent(intent:Intent?){
+         viewModelScope.launch {
+             _myWord.value=datasource.getWordById(intent?.dataString?.toInt())
+         }
+         Timber.i(intent?.data.toString())
     }
 
 

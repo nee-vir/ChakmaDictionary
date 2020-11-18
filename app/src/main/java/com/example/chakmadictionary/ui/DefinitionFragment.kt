@@ -48,7 +48,10 @@ class DefinationFragment : Fragment() {
 
         val viewModelFactory=DefinitionViewModelFactory(activity.application,dataSource)
 
-         definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)
+        activity.run{
+            definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)?: throw Exception("Invalid Activity")
+        }
+
 
         binding.setLifecycleOwner(this)
         
@@ -60,6 +63,13 @@ class DefinationFragment : Fragment() {
         definitionViewModel.retrieveFromDatabase("Baluk")
         definitionViewModel.myWord.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context,"The word changed",Toast.LENGTH_SHORT).show()
+        })
+
+
+//        definitionViewModel.handleSuggestionIntent(getActivity()?.intent)
+//
+        definitionViewModel.handled.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(this.context,"Working",Toast.LENGTH_SHORT).show()
         })
 
         setHasOptionsMenu(true)
@@ -84,5 +94,6 @@ class DefinationFragment : Fragment() {
             }
         })
     }
+
 
 }
