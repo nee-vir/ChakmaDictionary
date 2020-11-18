@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.databinding.FragmentDefinationBinding
@@ -53,7 +54,9 @@ class DefinationFragment : Fragment() {
         
 
         binding.definitionViewModel=definitionViewModel
-
+        lifecycleScope.launch {
+            definitionViewModel.retrieveWords()
+        }
         definitionViewModel.retrieveFromDatabase("Baluk")
         definitionViewModel.myWord.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context,"The word changed",Toast.LENGTH_SHORT).show()
