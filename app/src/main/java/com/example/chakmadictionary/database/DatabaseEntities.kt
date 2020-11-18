@@ -17,3 +17,8 @@ data class DatabaseWord constructor(
     val imageUrl:String?=null,
     val soundUrl:String?=null,
     val synonyms:String?=null)
+
+
+/*@Entity(tableName = "suggestion_table")
+data class SuggestionWord constructor(
+)*/

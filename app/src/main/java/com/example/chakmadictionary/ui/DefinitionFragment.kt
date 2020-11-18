@@ -50,6 +50,7 @@ class DefinationFragment : Fragment() {
          definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)
 
         binding.setLifecycleOwner(this)
+        
 
         binding.definitionViewModel=definitionViewModel
 
