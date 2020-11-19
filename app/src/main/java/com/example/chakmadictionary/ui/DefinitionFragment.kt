@@ -77,7 +77,7 @@ class DefinationFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+   /* override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.search_menu,menu)
         val searchManager= activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
@@ -93,7 +93,7 @@ class DefinationFragment : Fragment() {
                 return false
             }
         })
-    }
+    }*/
 
 
 }
