@@ -1,6 +1,7 @@
 package com.example.chakmadictionary.main
 
 import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -39,31 +40,25 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater= menuInflater
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        val inflater=menuInflater
         inflater.inflate(R.menu.search_menu,menu)
+        val searchManager=getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView=menu?.findItem(R.id.app_bar_search)?.actionView as SearchView
-        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(this@MainActivity,query,Toast.LENGTH_SHORT).show()
+                definitionViewModel.retrieveFromDatabase(query)
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-//                Toast.makeText(this@MainActivity,newText,Toast.LENGTH_SHORT).show()
-                return true
+                return false
             }
         })
         return true
-    }*/
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//
-//        when(item.itemId){
-//            R.id.app_bar_search -> onSearchRequested()
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
+    }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
@@ -73,6 +68,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
 
 

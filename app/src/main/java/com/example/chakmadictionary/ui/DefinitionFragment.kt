@@ -65,8 +65,6 @@ class DefinationFragment : Fragment() {
             Toast.makeText(this.context,"The word changed",Toast.LENGTH_SHORT).show()
         })
 
-
-//        definitionViewModel.handleSuggestionIntent(getActivity()?.intent)
 //
         definitionViewModel.handled.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context,"Working",Toast.LENGTH_SHORT).show()
@@ -77,7 +75,7 @@ class DefinationFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+    /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.search_menu,menu)
         val searchManager= activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
@@ -93,7 +91,7 @@ class DefinationFragment : Fragment() {
                 return false
             }
         })
-    }
+    }*/
 
 
 }

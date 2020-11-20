@@ -6,7 +6,7 @@
     app:startDestination="@id/definationFragment">
     <fragment
         android:id="@+id/definationFragment"
+        tools:layout="@layout/fragment_defination"
         android:name="com.example.chakmadictionary.ui.DefinationFragment"
-        android:label="fragment_defination"
-        tools:layout="@layout/fragment_defination" />
+        android:label="DefinationFragment" />
 </navigation>
