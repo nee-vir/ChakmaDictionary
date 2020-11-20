@@ -6,7 +6,17 @@
     app:startDestination="@id/definationFragment">
     <fragment
         android:id="@+id/definationFragment"
-        tools:layout="@layout/fragment_defination"
+        tools:layout="@layout/fragment_definition"
         android:name="com.example.chakmadictionary.ui.DefinationFragment"
         android:label="DefinationFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.chakmadictionary.ui.history.HistoryFragment"
+        tools:layout="@layout/fragment_history"
+        android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        tools:layout="@layout/fragment_bookmark"
+        android:name="com.example.chakmadictionary.ui.bookmark.BookmarkFragment"
+        android:label="BookmarkFragment" />
 </navigation>

@@ -12,11 +12,18 @@ import android.view.MenuItem
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.MenuItemCompat
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDao
 import com.example.chakmadictionary.database.WordsDatabase
+import com.example.chakmadictionary.databinding.ActivityMainBinding
 import com.example.chakmadictionary.ui.DefinationFragment
 import com.example.chakmadictionary.ui.DefinitionViewModel
 import com.example.chakmadictionary.ui.DefinitionViewModelFactory
@@ -25,15 +32,23 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
     lateinit var definitionViewModel: DefinitionViewModel
     lateinit var dataSource:WordsDao
-    val handleIntent=MutableLiveData<Intent>()
+    lateinit var appBarConfiguration: AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding=DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
         val application= requireNotNull(this.application)
         dataSource=WordsDatabase.getInstance(application).wordsDao
         val viewModelFactory=DefinitionViewModelFactory(application,dataSource)
         definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)
-
+        val toolbar=binding.appBarContent.toolbar
+        val drawerLayout=binding.drawerLayout
+        val navView=binding.navView
+        val navController=findNavController(R.id.nav_host_fragment)
+        setSupportActionBar(toolbar)
+        appBarConfiguration= AppBarConfiguration(navController.graph,drawerLayout)
+        setupActionBarWithNavController(navController,appBarConfiguration)
+        navView.setupWithNavController(navController)
 
         Timber.d(intent.action.toString())
 
@@ -58,6 +73,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
         return true
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController=findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfiguration)|| super.onSupportNavigateUp()
     }
 
     override fun onNewIntent(intent: Intent?) {

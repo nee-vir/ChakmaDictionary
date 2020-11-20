@@ -13,7 +13,7 @@
         <provider
             android:authorities="com.example.chakmadictionary.providers.MyCustomSuggestionProvider"
             android:name=".providers.MyCustomSuggestionProvider"/>
-        <activity android:name=".main.MainActivity" android:launchMode="singleTop">
+        <activity android:name=".main.MainActivity" android:launchMode="singleTop" android:theme="@style/Theme.ChakmaDictionary.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />

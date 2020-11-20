@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDatabase
-import com.example.chakmadictionary.databinding.FragmentDefinationBinding
+import com.example.chakmadictionary.databinding.FragmentDefinitionBinding
 import kotlinx.coroutines.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,7 +40,7 @@ class DefinationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding=FragmentDefinationBinding.inflate(inflater,container,false)
+        val binding= FragmentDefinitionBinding.inflate(inflater,container,false)
 
         val activity= requireNotNull(activity)
 
