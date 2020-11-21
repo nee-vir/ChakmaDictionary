@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/definationFragment">
+    app:startDestination="@id/definitionFragment">
     <fragment
-        android:id="@+id/definationFragment"
+        android:id="@+id/definitionFragment"
         tools:layout="@layout/fragment_definition"
         android:name="com.example.chakmadictionary.ui.DefinationFragment"
-        android:label="DefinationFragment" />
+        android:label="DefinitionFragment" />
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.chakmadictionary.ui.history.HistoryFragment"

@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.search_menu,menu)
         val searchManager=getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchView=menu?.findItem(R.id.app_bar_search)?.actionView as SearchView
+        searchView.maxWidth= Int.MAX_VALUE
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {

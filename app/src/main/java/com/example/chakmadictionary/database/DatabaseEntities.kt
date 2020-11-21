@@ -2,6 +2,7 @@ package com.example.chakmadictionary.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 
@@ -19,6 +20,17 @@ data class DatabaseWord constructor(
     val synonyms:String?=null)
 
 
-/*@Entity(tableName = "suggestion_table")
-data class SuggestionWord constructor(
-)*/
+@Entity(tableName = "history_table")
+data class HistoryWord constructor(
+        @PrimaryKey
+        val wordId:Long=0L,
+        val word: String?=null
+)
+
+
+@Entity(tableName = "bookmark_table")
+data class BookmarkWord constructor(
+        @PrimaryKey
+        val wordId:Long=0L,
+        val word: String?=null
+)

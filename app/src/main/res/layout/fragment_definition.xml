@@ -8,139 +8,141 @@
             name="definitionViewModel"
             type="com.example.chakmadictionary.ui.DefinitionViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.DefinationFragment">
 
+
+        <CheckBox
+            android:id="@+id/bookmarkCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:button="@drawable/bookmark_selector"
+            android:text="Bookmark Word"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-        android:id="@+id/wordName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@{definitionViewModel.myWord.word}"
-        tools:text="Word"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.057" />
+            android:id="@+id/wordText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:text="@{definitionViewModel.myWord.word}"
+            tools:text="Word"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/bookmarkCheckbox"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/translationLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Translation"
-        app:layout_constraintEnd_toEndOf="@+id/wordName"
-        android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="@+id/wordName"
-        app:layout_constraintTop_toBottomOf="@+id/wordName" />
+        <TextView
+            android:id="@+id/EnglishLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="English:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wordText" />
 
-    <TextView
-        android:id="@+id/translationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        tools:text="Sobdo"
-        android:text="@{definitionViewModel.myWord.translation}"
-        app:layout_constraintEnd_toEndOf="@+id/translationLabel"
-        app:layout_constraintHorizontal_bias="0.053"
-        app:layout_constraintStart_toStartOf="@+id/translationLabel"
-        app:layout_constraintTop_toBottomOf="@+id/translationLabel" />
+        <TextView
+            android:id="@+id/chakmaWordText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            tools:text="Sobhdo"
+            android:text="@{definitionViewModel.myWord.translation}"
+            android:textSize="25sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/EnglishLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/EnglishLabel" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@+id/translationText"
-        app:layout_constraintTop_toBottomOf="@+id/translationText"
-        app:srcCompat="@drawable/sound_icon_foreground" />
+        <TextView
+            android:id="@+id/definitionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Definition:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EnglishLabel" />
 
-    <TextView
-        android:id="@+id/wordPronunciation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="pronounce"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/translationText" />
+        <TextView
+            android:id="@+id/definitionText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="@{definitionViewModel.myWord.definition}"
+            tools:text="I am good at thiss I am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thiss"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/definitionLabel" />
 
-    <TextView
-        android:id="@+id/definationLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Definition"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <TextView
+            android:id="@+id/englishExampleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Example in english:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/definitionText" />
 
-    <TextView
-        android:id="@+id/definationText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="6dp"
-        android:inputType="textMultiLine"
-        android:text="@{definitionViewModel.myWord.definition}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/definationLabel"
-        app:layout_constraintTop_toBottomOf="@+id/definationLabel" />
-
-    <TextView
-        android:id="@+id/exampleSentencesLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Example Sentences"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/definationText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/definationText"
-        app:layout_constraintTop_toBottomOf="@+id/definationText" />
-
-    <TextView
-        android:id="@+id/exampleSentences"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:inputType=""
-        tools:text="@string/exampleSentenceOne"
-        android:text="@{definitionViewModel.myWord.example}"
-        app:layout_constraintEnd_toEndOf="@+id/definationText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/exampleSentencesLabel"
-        app:layout_constraintTop_toBottomOf="@+id/exampleSentencesLabel" />
-
-    <TextView
-        android:id="@+id/synonymsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        tools:text="Synonyms"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/exampleSentences"
-        app:layout_constraintTop_toBottomOf="@+id/exampleSentences" />
-
-    <TextView
-        android:id="@+id/synonymsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        tools:text="Term"
-        android:text="Not yet implemented"
-        app:layout_constraintStart_toStartOf="@+id/synonymsLabel"
-        app:layout_constraintTop_toBottomOf="@+id/synonymsLabel" />
-
-
-
+        <TextView
+            android:id="@+id/englishExampleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="@{definitionViewModel.myWord.example}"
+            tools:text="This is an example to demonstrate the usage of the word and I hope you find this word useful"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/englishExampleLabel" />
+        <TextView
+            android:id="@+id/chakmaExampleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Example in chakma:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/englishExampleText" />
+        <TextView
+            android:id="@+id/chakmaExampleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="@{definitionViewModel.myWord.example2}"
+            tools:text="This is an example to demonstrate the usage of the word and I hope you find this word useful"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chakmaExampleLabel" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
