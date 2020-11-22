@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.chakmadictionary.database.BookmarkWord
 import com.example.chakmadictionary.database.DatabaseWord
 import com.example.chakmadictionary.database.WordsDao
 import com.example.chakmadictionary.database.WordsDatabase
@@ -30,9 +31,19 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
 
     val list= mutableListOf<NetworkWord>()
 
-    val job= Job()
+    private val _bookmarkState=MutableLiveData<Boolean>()
 
-    val coroutineScope=(Dispatchers.Main+ Job())
+    val bookMarkState:LiveData<Boolean>
+    get() = _bookmarkState
+
+//    private val _bookMarkWord= MutableLiveData<BookmarkWord>()
+//
+//    private val bookmarkWord:LiveData<BookmarkWord>
+//    get() = _bookMarkWord
+
+//    val job= Job()
+
+//    val coroutineScope=(Dispatchers.Main+ Job())
 
     suspend fun retrieveWords(){
         val db=FirebaseFirestore.getInstance()
@@ -63,6 +74,7 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
      fun handleSuggestionIntent(intent:Intent?){
          viewModelScope.launch {
              _myWord.value=datasource.getWordById(intent?.dataString?.toInt())
+             _bookmarkState.value=datasource.getBookmarkById(_myWord.value?.wordId)
          }
          Timber.i(intent?.data.toString())
     }
@@ -72,7 +84,25 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
     fun retrieveFromDatabase(word:String?){
         viewModelScope.launch {
             _myWord.value=datasource.getWord(word)
+            _bookmarkState.value=datasource.getBookmarkById(_myWord.value?.wordId)
         }
+    }
+
+    fun onBookmark(id:Long,word:String){
+        if(_bookmarkState.value==false){
+            val bookmarkWord=BookmarkWord(id,word)
+            viewModelScope.launch {
+                datasource.insertBookmark(bookmarkWord)
+                _bookmarkState.value=true
+            }
+
+        } else{
+            viewModelScope.launch {
+                datasource.deleteBookmark(id)
+                _bookmarkState.value=false
+            }
+        }
+
     }
 
 

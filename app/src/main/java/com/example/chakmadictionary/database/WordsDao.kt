@@ -2,6 +2,7 @@ package com.example.chakmadictionary.database
 
 import android.database.Cursor
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 
@@ -28,10 +29,25 @@ interface WordsDao {
     @Query("SELECT*FROM words_table where wordId=:id")
     suspend fun getWordById(id:Int?): DatabaseWord?
 
+
+
+    //History
     @Query("SELECT*FROM history_table")
     suspend fun getEntireHistory():List<HistoryWord>
 
+
+
+    //Bookmark
     @Query("SELECT*FROM bookmark_table")
     suspend fun getAllBookmarks():List<BookmarkWord>
+
+    @Query("SELECT EXISTS(SELECT*FROM bookmark_table WHERE wordId=:id)")
+    suspend fun getBookmarkById(id:Long?):Boolean
+
+    @Insert(entity = BookmarkWord::class, onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertBookmark(word:BookmarkWord)
+
+    @Query("DELETE FROM bookmark_table where wordId=:id")
+    suspend fun deleteBookmark(id:Long?)
 
 }

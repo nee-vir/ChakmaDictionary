@@ -23,6 +23,8 @@
             android:layout_marginEnd="24dp"
             android:button="@drawable/bookmark_selector"
             android:text="Bookmark Word"
+            android:onClick="@{()->definitionViewModel.onBookmark(definitionViewModel.myWord.wordId,definitionViewModel.myWord.word)}"
+            app:checkboxState="@{definitionViewModel.bookMarkState}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
