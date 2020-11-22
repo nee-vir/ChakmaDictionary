@@ -57,10 +57,10 @@ class DefinationFragment : Fragment() {
         
 
         binding.definitionViewModel=definitionViewModel
-        lifecycleScope.launch {
+        /*lifecycleScope.launch {
             definitionViewModel.retrieveWords()
         }
-        definitionViewModel.retrieveFromDatabase("Baluk")
+        definitionViewModel.retrieveFromDatabase("Baluk")*/
         definitionViewModel.myWord.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context,"The word changed",Toast.LENGTH_SHORT).show()
         })

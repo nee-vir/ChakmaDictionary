@@ -22,15 +22,19 @@ data class DatabaseWord constructor(
 
 @Entity(tableName = "history_table")
 data class HistoryWord constructor(
-        @PrimaryKey
-        val wordId:Long=0L,
-        val word: String?=null
-)
+        val wordId:Long?=0L,
+        val word: String?=null,
+        val searchTime: String?=null
+){
+    @PrimaryKey(autoGenerate = true)
+    var historyId:Long=0L
+}
 
 
 @Entity(tableName = "bookmark_table")
 data class BookmarkWord constructor(
         @PrimaryKey
         val wordId:Long=0L,
-        val word: String?=null
+        val word: String?=null,
+        val time: Long?=0L
 )

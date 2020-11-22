@@ -12,3 +12,4 @@ fun setCheckboxState(checkBox: CheckBox,state: Boolean=false){
         checkBox.text="Bookmark Word"
     }
 }
+

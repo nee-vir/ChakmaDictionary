@@ -9,7 +9,7 @@ import androidx.room.*
 @Dao
 interface WordsDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = DatabaseWord::class,onConflict = OnConflictStrategy.REPLACE)
      suspend fun insertAll(words: List<DatabaseWord>)
 
     @Query("SELECT * FROM words_table WHERE word=:name OR translation=:name")
@@ -32,13 +32,21 @@ interface WordsDao {
 
 
     //History
-    @Query("SELECT*FROM history_table")
-    suspend fun getEntireHistory():List<HistoryWord>
+    //When you want to return an observable there is no need to make the function suspend
+    @Query("SELECT*FROM history_table ORDER BY historyId DESC")
+    fun getEntireHistory():LiveData<List<HistoryWord>>
+
+    @Insert(entity = HistoryWord::class,onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertHistory(word:HistoryWord)
+
+    @Query("DELETE FROM history_table where historyId=:hId")
+    suspend fun deleteHistoryItem(hId:Long?)
+
 
 
 
     //Bookmark
-    @Query("SELECT*FROM bookmark_table")
+    @Query("SELECT*FROM bookmark_table ORDER BY time DESC")
     suspend fun getAllBookmarks():List<BookmarkWord>
 
     @Query("SELECT EXISTS(SELECT*FROM bookmark_table WHERE wordId=:id)")

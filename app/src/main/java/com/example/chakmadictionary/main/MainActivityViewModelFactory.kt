@@ -7,6 +7,7 @@ import com.example.chakmadictionary.database.WordsDao
 import com.example.chakmadictionary.ui.DefinitionViewModel
 import java.lang.IllegalArgumentException
 
+@Suppress("UNCHECKED_CAST")
 class MainActivityViewModelFactory(private val application: Application, private val dataSource: WordsDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MainActivityViewModel::class.java)){

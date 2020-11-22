@@ -2,19 +2,19 @@ package com.example.chakmadictionary.ui
 
 import android.app.Application
 import android.content.Intent
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.chakmadictionary.database.BookmarkWord
-import com.example.chakmadictionary.database.DatabaseWord
-import com.example.chakmadictionary.database.WordsDao
-import com.example.chakmadictionary.database.WordsDatabase
+import com.example.chakmadictionary.database.*
 import com.example.chakmadictionary.network.NetworkObjectContainer
 import com.example.chakmadictionary.network.NetworkWord
 import com.example.chakmadictionary.network.asDatabaseModel
+import com.example.chakmadictionary.utils.getCurrentTime
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -75,9 +75,14 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
          viewModelScope.launch {
              _myWord.value=datasource.getWordById(intent?.dataString?.toInt())
              _bookmarkState.value=datasource.getBookmarkById(_myWord.value?.wordId)
+
+             //Insert history item
+             val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
+             datasource.insertHistory(hWord)
          }
          Timber.i(intent?.data.toString())
     }
+
 
 
 
@@ -85,12 +90,17 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
         viewModelScope.launch {
             _myWord.value=datasource.getWord(word)
             _bookmarkState.value=datasource.getBookmarkById(_myWord.value?.wordId)
+
+            //insert history item
+            val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
+            datasource.insertHistory(hWord)
         }
     }
 
+
     fun onBookmark(id:Long,word:String){
         if(_bookmarkState.value==false){
-            val bookmarkWord=BookmarkWord(id,word)
+            val bookmarkWord=BookmarkWord(id,word,System.currentTimeMillis())
             viewModelScope.launch {
                 datasource.insertBookmark(bookmarkWord)
                 _bookmarkState.value=true
