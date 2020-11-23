@@ -2,10 +2,6 @@ package com.example.chakmadictionary.ui
 
 import android.app.Application
 import android.content.Intent
-import android.os.Build
-import android.util.Log
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,12 +12,10 @@ import com.example.chakmadictionary.network.NetworkWord
 import com.example.chakmadictionary.network.asDatabaseModel
 import com.example.chakmadictionary.utils.getCurrentTime
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class DefinitionViewModel(application: Application,private val datasource:WordsDao): AndroidViewModel(application) {
+class DefinitionViewModel(application: Application,private val dataSource:WordsDao): AndroidViewModel(application) {
 
 
     private val _myWord= MutableLiveData<DatabaseWord>()
@@ -45,7 +39,7 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
 
 //    val coroutineScope=(Dispatchers.Main+ Job())
 
-    suspend fun retrieveWords(){
+    private suspend  fun retrieveWords(){
         val db=FirebaseFirestore.getInstance()
         db.collection("words").get().addOnSuccessListener { result ->
             for(document in result){
@@ -54,12 +48,12 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
             }
             viewModelScope.launch {
                 val wordsContainer=NetworkObjectContainer(list)
-                datasource.insertAll(wordsContainer.asDatabaseModel())
+                dataSource.insertAll(wordsContainer.asDatabaseModel())
             }
-            viewModelScope.launch {
-                val dbObject=datasource.getAllWords()
-                Timber.i(dbObject.size.toString())
-            }
+//            viewModelScope.launch {
+//                val dbObject=datasource.getAllWords()
+//                Timber.i(dbObject.size.toString())
+//            }
 
         }.addOnFailureListener {
             Timber.d("Error getting documents : $it")
@@ -69,16 +63,20 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
     val handled=MutableLiveData<Boolean>()
     init {
         handled.value=false
+        viewModelScope.launch {
+            retrieveWords()
+        }
+
     }
 
      fun handleSuggestionIntent(intent:Intent?){
          viewModelScope.launch {
-             _myWord.value=datasource.getWordById(intent?.dataString?.toInt())
-             _bookmarkState.value=datasource.getBookmarkById(_myWord.value?.wordId)
+             _myWord.value=dataSource.getWordById(intent?.dataString?.toInt())
+             _bookmarkState.value=dataSource.getBookmarkById(_myWord.value?.wordId)
 
              //Insert history item
              val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
-             datasource.insertHistory(hWord)
+             dataSource.insertHistory(hWord)
          }
          Timber.i(intent?.data.toString())
     }
@@ -88,12 +86,12 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
 
     fun retrieveFromDatabase(word:String?){
         viewModelScope.launch {
-            _myWord.value=datasource.getWord(word)
-            _bookmarkState.value=datasource.getBookmarkById(_myWord.value?.wordId)
+            _myWord.value=dataSource.getWord(word)
+            _bookmarkState.value=dataSource.getBookmarkById(_myWord.value?.wordId)
 
             //insert history item
             val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
-            datasource.insertHistory(hWord)
+            dataSource.insertHistory(hWord)
         }
     }
 
@@ -102,13 +100,13 @@ class DefinitionViewModel(application: Application,private val datasource:WordsD
         if(_bookmarkState.value==false){
             val bookmarkWord=BookmarkWord(id,word,System.currentTimeMillis())
             viewModelScope.launch {
-                datasource.insertBookmark(bookmarkWord)
+                dataSource.insertBookmark(bookmarkWord)
                 _bookmarkState.value=true
             }
 
         } else{
             viewModelScope.launch {
-                datasource.deleteBookmark(id)
+                dataSource.deleteBookmark(id)
                 _bookmarkState.value=false
             }
         }

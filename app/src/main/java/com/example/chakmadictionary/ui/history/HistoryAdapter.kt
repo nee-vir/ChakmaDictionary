@@ -1,11 +1,12 @@
-package com.example.chakmadictionary.ui.bookmark
+package com.example.chakmadictionary.ui.history
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chakmadictionary.database.DatabaseWord
+import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.HistoryWord
 import com.example.chakmadictionary.database.WordsDao
 import com.example.chakmadictionary.databinding.HistoryViewBinding
@@ -15,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class HistoryAdapter(val dataSource:WordsDao): ListAdapter<HistoryWord,HistoryAdapter.ViewHolder>(HistoryDiffCallback()){
+class HistoryAdapter(val dataSource:WordsDao): ListAdapter<HistoryWord, HistoryAdapter.ViewHolder>(HistoryDiffCallback()){
 
 
 
@@ -35,9 +36,12 @@ class HistoryAdapter(val dataSource:WordsDao): ListAdapter<HistoryWord,HistoryAd
     class ViewHolder(val binding:HistoryViewBinding,val dataSource: WordsDao):RecyclerView.ViewHolder(binding.root){
         fun bind(item:HistoryWord){
             binding.historyItem=item
+            binding.historyWord.setOnClickListener {
+                it.findNavController().navigate(R.id.action_historyFragment_to_definitionFragment)
+            }
             binding.deleteHistoryButton.setOnClickListener {
-                val couritineScope= CoroutineScope(Dispatchers.IO+ Job())
-                couritineScope.launch {
+                val coroutineScope= CoroutineScope(Dispatchers.IO+ Job())
+                coroutineScope.launch {
                     dataSource.deleteHistoryItem(item.historyId)
                 }
 

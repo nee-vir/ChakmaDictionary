@@ -49,7 +49,7 @@ class DefinationFragment : Fragment() {
         val viewModelFactory=DefinitionViewModelFactory(activity.application,dataSource)
 
         activity.run{
-            definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)?: throw Exception("Invalid Activity")
+            definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)//?: throw Exception("Invalid Activity")
         }
 
 

@@ -19,6 +19,7 @@ interface WordsDao {
      suspend fun getAllWords(): List<DatabaseWord>
 
 
+    //ContentProvider suggestion table queries
     //The column alias names has to be the same as these or the system will not understand
     @Query("SELECT wordId AS _id, word AS suggest_text_1, translation AS suggest_text_2, wordId AS suggest_intent_data FROM words_table WHERE word LIKE :name OR translation LIKE :name")
     fun getSuggestionWord(name:String?):Cursor?
@@ -47,10 +48,10 @@ interface WordsDao {
 
     //Bookmark
     @Query("SELECT*FROM bookmark_table ORDER BY time DESC")
-    suspend fun getAllBookmarks():List<BookmarkWord>
+     fun getAllBookmarks():LiveData<List<BookmarkWord>>
 
     @Query("SELECT EXISTS(SELECT*FROM bookmark_table WHERE wordId=:id)")
-    suspend fun getBookmarkById(id:Long?):Boolean
+     suspend fun getBookmarkById(id:Long?):Boolean
 
     @Insert(entity = BookmarkWord::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBookmark(word:BookmarkWord)
