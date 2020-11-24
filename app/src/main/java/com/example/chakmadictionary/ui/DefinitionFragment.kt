@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.databinding.FragmentDefinitionBinding
@@ -29,6 +30,8 @@ private const val ARG_PARAM2 = "param2"
 class DefinationFragment : Fragment() {
 
     lateinit var definitionViewModel:DefinitionViewModel
+
+    val args:DefinationFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +56,11 @@ class DefinationFragment : Fragment() {
         }
 
 
-        binding.setLifecycleOwner(this)
-        
+        binding.lifecycleOwner=this
+
+        if(args.wordId>=0){
+            definitionViewModel.retrieveFromDatabase(args.word)
+        }
 
         binding.definitionViewModel=definitionViewModel
         /*lifecycleScope.launch {
@@ -68,6 +74,15 @@ class DefinationFragment : Fragment() {
 //
         definitionViewModel.handled.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context,"Working",Toast.LENGTH_SHORT).show()
+        })
+
+        definitionViewModel.showProgressBar.observe(viewLifecycleOwner, Observer {
+            if(it){
+                binding.progressBar.visibility=View.VISIBLE
+            } else{
+                binding.progressBar.visibility=View.INVISIBLE
+            }
+
         })
 
         setHasOptionsMenu(true)

@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.MenuItemCompat
@@ -66,13 +67,23 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 definitionViewModel.retrieveFromDatabase(query)
+                definitionViewModel.loaded()
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                return false
+                definitionViewModel.load()
+                if(newText.equals("")){
+                    definitionViewModel.loaded()
+                }
+                return true
             }
         })
+
+        searchView.setOnQueryTextFocusChangeListener { v, hasFocus -> definitionViewModel.loaded() }
+
+
+
         return true
     }
 
@@ -86,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         when(intent?.action){
             Intent.ACTION_VIEW -> {
                 definitionViewModel.handleSuggestionIntent(intent)
+                definitionViewModel.loaded()
             }
         }
     }

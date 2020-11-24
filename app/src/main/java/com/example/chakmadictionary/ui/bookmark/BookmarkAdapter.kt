@@ -2,6 +2,7 @@ package com.example.chakmadictionary.ui.bookmark
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chakmadictionary.database.BookmarkWord
@@ -30,6 +31,9 @@ class BookmarkAdapter(val dataSource: WordsDao): ListAdapter<BookmarkWord,Bookma
     class ViewHolder(val binding:BookmarkViewBinding, val dataSource: WordsDao):RecyclerView.ViewHolder(binding.root){
         fun bind(item: BookmarkWord){
             binding.bookmarkItem=item
+            binding.bookmarkText.setOnClickListener {
+                it.findNavController().navigate(BookmarkFragmentDirections.actionBookmarkFragmentToDefinitionFragment(item.word!!,item.wordId))
+            }
             binding.deleteBookmarkButton.setOnClickListener {
                 val coroutineScope= CoroutineScope(Dispatchers.IO+ Job())
                 coroutineScope.launch {

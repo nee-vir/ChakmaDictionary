@@ -18,6 +18,9 @@ interface WordsDao {
     @Query("SELECT * FROM words_table")
      suspend fun getAllWords(): List<DatabaseWord>
 
+    @Query("SELECT * FROM words_table WHERE wordId=:id")
+    suspend fun getById(id:Long): DatabaseWord?
+
 
     //ContentProvider suggestion table queries
     //The column alias names has to be the same as these or the system will not understand

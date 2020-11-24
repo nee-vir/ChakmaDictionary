@@ -30,6 +30,10 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     val bookMarkState:LiveData<Boolean>
     get() = _bookmarkState
 
+    private val _showProgressBar=MutableLiveData<Boolean>()
+
+    val showProgressBar:LiveData<Boolean>
+    get() = _showProgressBar
 //    private val _bookMarkWord= MutableLiveData<BookmarkWord>()
 //
 //    private val bookmarkWord:LiveData<BookmarkWord>
@@ -63,6 +67,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     val handled=MutableLiveData<Boolean>()
     init {
         handled.value=false
+        _showProgressBar.value=false
         viewModelScope.launch {
             retrieveWords()
         }
@@ -112,6 +117,15 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
         }
 
     }
+
+    fun load(){
+        _showProgressBar.value=true
+    }
+
+    fun loaded(){
+        _showProgressBar.value=false
+    }
+
 
 
 }

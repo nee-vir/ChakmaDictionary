@@ -8,7 +8,16 @@
         android:id="@+id/definitionFragment"
         tools:layout="@layout/fragment_definition"
         android:name="com.example.chakmadictionary.ui.DefinationFragment"
-        android:label="DefinitionFragment" />
+        android:label="DefinitionFragment" >
+        <argument
+            android:name="word"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="wordId"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.chakmadictionary.ui.history.HistoryFragment"
@@ -16,7 +25,8 @@
         android:label="HistoryFragment" >
         <action
             android:id="@+id/action_historyFragment_to_definitionFragment"
-            app:destination="@id/definitionFragment" />
+            app:destination="@id/definitionFragment"
+            app:popUpTo="@id/definitionFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookmarkFragment"

@@ -12,7 +12,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/bookmarkText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -28,10 +28,10 @@
         android:id="@+id/deleteBookmarkButton"
         style="@style/DeleteButtonStyle"
         android:text="X"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView"
+        app:layout_constraintBaseline_toBaselineOf="@+id/bookmarkText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/bookmarkText" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
