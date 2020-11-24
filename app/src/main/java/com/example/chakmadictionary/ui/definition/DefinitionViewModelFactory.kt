@@ -1,4 +1,4 @@
-package com.example.chakmadictionary.ui
+package com.example.chakmadictionary.ui.definition
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

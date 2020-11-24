@@ -1,18 +1,12 @@
-package com.example.chakmadictionary.ui
+package com.example.chakmadictionary.ui.definition
 
-import android.app.SearchManager
-import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.databinding.FragmentDefinitionBinding
 import kotlinx.coroutines.*
@@ -24,14 +18,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [DefinationFragment.newInstance] factory method to
+ * Use the [DefinitionFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DefinationFragment : Fragment() {
+class DefinitionFragment : Fragment() {
 
-    lateinit var definitionViewModel:DefinitionViewModel
+    lateinit var definitionViewModel: DefinitionViewModel
 
-    val args:DefinationFragmentArgs by navArgs()
+    val args: DefinitionFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +43,7 @@ class DefinationFragment : Fragment() {
 
         val dataSource=WordsDatabase.getInstance(activity.application).wordsDao
 
-        val viewModelFactory=DefinitionViewModelFactory(activity.application,dataSource)
+        val viewModelFactory= DefinitionViewModelFactory(activity.application,dataSource)
 
         activity.run{
             definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)//?: throw Exception("Invalid Activity")

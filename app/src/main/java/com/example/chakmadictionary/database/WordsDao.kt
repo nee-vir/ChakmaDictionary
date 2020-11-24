@@ -33,6 +33,9 @@ interface WordsDao {
     @Query("SELECT*FROM words_table where wordId=:id")
     suspend fun getWordById(id:Int?): DatabaseWord?
 
+    @Query("SELECT*FROM words_table WHERE wordId=null")
+    fun emptyCursor():Cursor?
+
 
 
     //History

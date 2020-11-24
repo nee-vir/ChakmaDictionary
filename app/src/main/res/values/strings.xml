@@ -3,6 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="defination_string">This the the body of the defination. The word will be defined in this part the screen and I know it will be fine to define here because its me</string>
-    <string name="exampleSentenceOne">"Always use the right word for the right situation" <br/> "Words when chosen carefully can be powerful"</string>
+    <string name="exampleSentenceOne">"Always use the right word for the right situation" <br /> "Words when chosen carefully can be powerful"</string>
     <string name="search_hint">Search the dictionary</string>
 </resources>

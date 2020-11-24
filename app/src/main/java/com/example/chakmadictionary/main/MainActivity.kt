@@ -5,16 +5,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
 import android.widget.SearchView
-import android.widget.Toast
-import androidx.core.view.MenuItemCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -25,9 +18,8 @@ import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDao
 import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.databinding.ActivityMainBinding
-import com.example.chakmadictionary.ui.DefinationFragment
-import com.example.chakmadictionary.ui.DefinitionViewModel
-import com.example.chakmadictionary.ui.DefinitionViewModelFactory
+import com.example.chakmadictionary.ui.definition.DefinitionViewModel
+import com.example.chakmadictionary.ui.definition.DefinitionViewModelFactory
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -40,14 +32,14 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_main)
         val application= requireNotNull(this.application)
         dataSource=WordsDatabase.getInstance(application).wordsDao
-        val viewModelFactory=DefinitionViewModelFactory(application,dataSource)
+        val viewModelFactory= DefinitionViewModelFactory(application,dataSource)
         definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)
         val toolbar=binding.appBarContent.toolbar
         val drawerLayout=binding.drawerLayout
         val navView=binding.navView
         val navController=findNavController(R.id.nav_host_fragment)
         setSupportActionBar(toolbar)
-        appBarConfiguration= AppBarConfiguration(navController.graph,drawerLayout)
+        appBarConfiguration= AppBarConfiguration(navController.graph,drawerLayout) // setOf(R.id.definitionFragment,R.id.welcomeFragment)
         setupActionBarWithNavController(navController,appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -68,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 definitionViewModel.retrieveFromDatabase(query)
                 definitionViewModel.loaded()
+                definitionViewModel.navigateToDefinitionFragment()
                 return true
             }
 
@@ -98,6 +91,7 @@ class MainActivity : AppCompatActivity() {
             Intent.ACTION_VIEW -> {
                 definitionViewModel.handleSuggestionIntent(intent)
                 definitionViewModel.loaded()
+                definitionViewModel.navigateToDefinitionFragment()
             }
         }
     }

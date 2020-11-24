@@ -1,4 +1,4 @@
-package com.example.chakmadictionary.ui
+package com.example.chakmadictionary.ui.definition
 
 import android.app.Application
 import android.content.Intent
@@ -34,6 +34,22 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
 
     val showProgressBar:LiveData<Boolean>
     get() = _showProgressBar
+
+    private val _navigateToDefinition=MutableLiveData<Boolean>()
+
+    val navigateToDefinition:LiveData<Boolean>
+    get() = _navigateToDefinition
+
+
+    fun navigateToDefinitionFragment(){
+        _navigateToDefinition.value=true
+    }
+
+    fun doneNavigating(){
+        _navigateToDefinition.value=false
+    }
+
+
 //    private val _bookMarkWord= MutableLiveData<BookmarkWord>()
 //
 //    private val bookmarkWord:LiveData<BookmarkWord>
@@ -64,10 +80,11 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
         }
     }
 
-    val handled=MutableLiveData<Boolean>()
+    val handled=MutableLiveData<Boolean>() //Fix this
     init {
         handled.value=false
         _showProgressBar.value=false
+        _navigateToDefinition.value=false
         viewModelScope.launch {
             retrieveWords()
         }
