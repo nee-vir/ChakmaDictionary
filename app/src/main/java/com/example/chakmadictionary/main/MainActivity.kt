@@ -128,6 +128,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.historyFragment -> navController.navigate(R.id.action_historyFragment_to_definitionFragment)
 
                 R.id.bookmarkFragment -> navController.navigate(R.id.action_bookmarkFragment_to_definitionFragment)
+
+                R.id.welcomeFragment -> navController.navigate(R.id.action_welcomeFragment_to_definitionFragment)
+
+                R.id.aboutFragment -> navController.navigate(R.id.action_aboutFragment_to_definitionFragment)
             }
         }
     }

@@ -15,6 +15,8 @@ import com.example.chakmadictionary.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment() {
 
+    lateinit var historyViewModel:HistoryViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,7 +31,10 @@ class HistoryFragment : Fragment() {
         val activity= requireNotNull(activity)
         val dataSource=WordsDatabase.getInstance(activity.application).wordsDao
         val historyViewModelFactory=HistoryViewModelFactory(activity.application,dataSource)
-        val historyViewModel=ViewModelProvider(this,historyViewModelFactory).get(HistoryViewModel::class.java)
+        activity.run {
+            historyViewModel=ViewModelProvider(this,historyViewModelFactory).get(HistoryViewModel::class.java)
+        }
+
         binding.lifecycleOwner=this
         val adapter= HistoryAdapter(dataSource)
         binding.historyList.adapter=adapter
