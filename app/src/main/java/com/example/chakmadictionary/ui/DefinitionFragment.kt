@@ -17,16 +17,7 @@ import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.databinding.FragmentDefinitionBinding
 import kotlinx.coroutines.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DefinationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DefinationFragment : Fragment() {
 
     lateinit var definitionViewModel:DefinitionViewModel
@@ -44,6 +35,8 @@ class DefinationFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding= FragmentDefinitionBinding.inflate(inflater,container,false)
+
+        binding.definationLayout.requestFocus()
 
         val activity= requireNotNull(activity)
 

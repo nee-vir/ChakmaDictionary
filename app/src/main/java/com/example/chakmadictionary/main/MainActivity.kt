@@ -13,9 +13,12 @@ import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.MenuItemCompat
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -28,6 +31,7 @@ import com.example.chakmadictionary.databinding.ActivityMainBinding
 import com.example.chakmadictionary.ui.DefinationFragment
 import com.example.chakmadictionary.ui.DefinitionViewModel
 import com.example.chakmadictionary.ui.DefinitionViewModelFactory
+import com.google.android.material.navigation.NavigationView
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -50,6 +54,18 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration= AppBarConfiguration(navController.graph,drawerLayout)
         setupActionBarWithNavController(navController,appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.menu.findItem(R.id.exit_item).setOnMenuItemClickListener {
+            this.finish()
+            return@setOnMenuItemClickListener true
+        }
+
+
+        navController.addOnDestinationChangedListener(object :NavController.OnDestinationChangedListener{
+            override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+                Timber.i(navController.currentDestination?.id.toString())
+            }
+        })
+
 
         Timber.d(intent.action.toString())
 
@@ -68,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 definitionViewModel.retrieveFromDatabase(query)
                 definitionViewModel.loaded()
+                navigateToDefinitionFragment()
                 return true
             }
 
@@ -98,9 +115,24 @@ class MainActivity : AppCompatActivity() {
             Intent.ACTION_VIEW -> {
                 definitionViewModel.handleSuggestionIntent(intent)
                 definitionViewModel.loaded()
+                navigateToDefinitionFragment()
             }
         }
     }
+
+    private fun navigateToDefinitionFragment(){
+        val navController=findNavController(R.id.nav_host_fragment)
+        val currentDestination:NavDestination=navController.currentDestination as NavDestination
+        currentDestination?.let {
+            when(currentDestination.id){
+                R.id.historyFragment -> navController.navigate(R.id.action_historyFragment_to_definitionFragment)
+
+                R.id.bookmarkFragment -> navController.navigate(R.id.action_bookmarkFragment_to_definitionFragment)
+            }
+        }
+    }
+
+
 
 
 

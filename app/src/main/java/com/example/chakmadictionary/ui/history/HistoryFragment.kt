@@ -1,10 +1,12 @@
 package com.example.chakmadictionary.ui.history
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.chakmadictionary.database.WordsDatabase
@@ -36,6 +38,16 @@ class HistoryFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        hideKeyboard()
+    }
+
+    private fun hideKeyboard(){
+        val inputManager:InputMethodManager= activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken,InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
 }
