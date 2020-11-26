@@ -2,6 +2,7 @@ package com.example.chakmadictionary.ui
 
 import android.app.Application
 import android.content.Intent
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -34,6 +35,10 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
 
     val showProgressBar:LiveData<Boolean>
     get() = _showProgressBar
+
+    private val _isViewVisible=MutableLiveData<Int>()
+    val isViewVisible:LiveData<Int>
+    get() = _isViewVisible
 //    private val _bookMarkWord= MutableLiveData<BookmarkWord>()
 //
 //    private val bookmarkWord:LiveData<BookmarkWord>
@@ -68,6 +73,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     init {
         handled.value=false
         _showProgressBar.value=false
+        _isViewVisible.value=View.GONE
         viewModelScope.launch {
             retrieveWords()
         }
@@ -77,6 +83,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
      fun handleSuggestionIntent(intent:Intent?){
          viewModelScope.launch {
              _myWord.value=dataSource.getWordById(intent?.dataString?.toInt())
+             handleVisibility()
              _bookmarkState.value=dataSource.getBookmarkById(_myWord.value?.wordId)
 
              //Insert history item
@@ -92,8 +99,9 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     fun retrieveFromDatabase(word:String?){
         viewModelScope.launch {
             _myWord.value=dataSource.getWord(word)
+            Timber.i(_myWord.value.toString())
+            handleVisibility()
             _bookmarkState.value=dataSource.getBookmarkById(_myWord.value?.wordId)
-
             //insert history item
             val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
             dataSource.insertHistory(hWord)
@@ -124,6 +132,14 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
 
     fun loaded(){
         _showProgressBar.value=false
+    }
+
+    private fun handleVisibility(){
+        if(_myWord.value==null){
+            _isViewVisible.value=View.GONE
+        } else{
+            _isViewVisible.value=View.VISIBLE
+        }
     }
 
 

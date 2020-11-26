@@ -19,7 +19,6 @@ import kotlinx.coroutines.launch
 class HistoryAdapter(val dataSource:WordsDao): ListAdapter<HistoryWord, HistoryAdapter.ViewHolder>(HistoryDiffCallback()){
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater=LayoutInflater.from(parent.context)
         val binding=HistoryViewBinding.inflate(inflater,parent,false)

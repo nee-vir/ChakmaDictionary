@@ -60,16 +60,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        navController.addOnDestinationChangedListener(object :NavController.OnDestinationChangedListener{
-            override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
-                Timber.i(navController.currentDestination?.id.toString())
-            }
-        })
-
-
-        Timber.d(intent.action.toString())
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -135,6 +125,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
+
+
+
+
 
 
 

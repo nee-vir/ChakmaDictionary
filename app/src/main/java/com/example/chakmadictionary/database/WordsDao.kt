@@ -37,7 +37,7 @@ interface WordsDao {
 
     //History
     //When you want to return an observable there is no need to make the function suspend
-    @Query("SELECT*FROM history_table ORDER BY historyId DESC")
+    @Query("SELECT*FROM history_table ORDER BY historyId DESC LIMIT 10")
     fun getEntireHistory():LiveData<List<HistoryWord>>
 
     @Insert(entity = HistoryWord::class,onConflict = OnConflictStrategy.REPLACE)
