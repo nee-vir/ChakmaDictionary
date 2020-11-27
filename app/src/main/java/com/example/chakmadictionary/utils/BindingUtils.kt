@@ -1,6 +1,8 @@
 package com.example.chakmadictionary.utils
 
+import android.view.View
 import android.widget.CheckBox
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 
 @BindingAdapter("checkboxState")
@@ -12,4 +14,25 @@ fun setCheckboxState(checkBox: CheckBox,state: Boolean=false){
         checkBox.text="Bookmark Word"
     }
 }
+
+@BindingAdapter("wordNotFoundVisibility")
+fun setVisibility(view:View,wordNotFound: Boolean){
+    if(wordNotFound){
+        view.visibility= View.GONE
+    } else{
+        view.visibility=View.VISIBLE
+    }
+}
+
+
+@BindingAdapter("wordNotFoundViewVisibility")
+fun setViewVisibility(view:ImageView,wordNotFound: Boolean){
+    if(wordNotFound){
+        view.visibility= View.VISIBLE
+    } else{
+        view.visibility=View.GONE
+    }
+}
+
+
 

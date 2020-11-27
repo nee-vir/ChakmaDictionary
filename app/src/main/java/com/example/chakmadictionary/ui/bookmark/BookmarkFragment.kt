@@ -34,6 +34,11 @@ class BookmarkFragment : Fragment() {
         val adapter=BookmarkAdapter(dataSource)
         binding.bookmarkList.adapter=adapter
         bookmarkViewModel.bookmarkList.observe(viewLifecycleOwner, Observer {
+            if(it==null|| it.isEmpty()){
+                binding.bookmarkNotFoundImage.visibility=View.VISIBLE
+            } else{
+                binding.bookmarkNotFoundImage.visibility=View.GONE
+            }
             adapter.submitList(it)
         })
         val destination=findNavController().currentDestination
@@ -47,20 +52,13 @@ class BookmarkFragment : Fragment() {
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        hideKeyboard()
-    }
 
-    override fun onDetach() {
-        super.onDetach()
-        hideKeyboard()
-    }
 
-    private fun hideKeyboard(){
-        val inputManager: InputMethodManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-    }
+//    override fun onDetach() {
+//        super.onDetach()
+//    }
+
+
 
 
 //    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

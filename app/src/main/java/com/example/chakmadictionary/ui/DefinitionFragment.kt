@@ -22,7 +22,7 @@ class DefinationFragment : Fragment() {
 
     lateinit var definitionViewModel:DefinitionViewModel
 
-    val args:DefinationFragmentArgs by navArgs()
+    private val args:DefinationFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +82,7 @@ class DefinationFragment : Fragment() {
 
         return binding.root
     }
+
 
     /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

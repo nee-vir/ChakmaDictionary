@@ -36,9 +36,10 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     val showProgressBar:LiveData<Boolean>
     get() = _showProgressBar
 
-    private val _isViewVisible=MutableLiveData<Int>()
-    val isViewVisible:LiveData<Int>
-    get() = _isViewVisible
+
+    private val _wordNotFound=MutableLiveData<Boolean>()
+    val wordNotFound:LiveData<Boolean>
+    get() = _wordNotFound
 //    private val _bookMarkWord= MutableLiveData<BookmarkWord>()
 //
 //    private val bookmarkWord:LiveData<BookmarkWord>
@@ -48,7 +49,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
 
 //    val coroutineScope=(Dispatchers.Main+ Job())
 
-    private suspend  fun retrieveWords(){
+    private suspend  fun retrieveWordsFromFirebase(){
         val db=FirebaseFirestore.getInstance()
         db.collection("words").get().addOnSuccessListener { result ->
             for(document in result){
@@ -73,9 +74,9 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     init {
         handled.value=false
         _showProgressBar.value=false
-        _isViewVisible.value=View.GONE
+        _wordNotFound.value=false
         viewModelScope.launch {
-            retrieveWords()
+            retrieveWordsFromFirebase()
         }
 
     }
@@ -135,11 +136,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     }
 
     private fun handleVisibility(){
-        if(_myWord.value==null){
-            _isViewVisible.value=View.GONE
-        } else{
-            _isViewVisible.value=View.VISIBLE
-        }
+        _wordNotFound.value = _myWord.value==null
     }
 
 

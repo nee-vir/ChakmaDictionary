@@ -57,10 +57,16 @@ class MyCustomSuggestionProvider : ContentProvider() {
 
     override fun query(uri: Uri, projection: Array<out String>?, selection: String?, selectionArgs: Array<out String>?, sortOrder: String?): Cursor? {
         val query= "%"+selectionArgs?.get(0)+"%"
-        Timber.i(query)
-        val cursor=dataSource.getSuggestionWord(query)
-        Timber.i(cursor?.getColumnName(0))
-        return cursor
+        return if(selectionArgs?.get(0).equals("")){
+            Timber.i("Empty Query")
+            null
+        } else{
+            val cursor=dataSource.getSuggestionWord(query)
+            Timber.i(cursor?.getColumnName(0))
+            cursor
+        }
+
+
     }
 
     override fun getType(uri: Uri): String? {

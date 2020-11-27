@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+<!--     Base application theme. -->
     <style name="Theme.ChakmaDictionary" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
@@ -14,17 +14,16 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.ChakmaDictionary.NoActionBar">
+   <!-- <style name="Theme.ChakmaDictionary.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorOnPrimary">@color/primaryTextColor</item>
-        <item name="colorOnSecondary">@color/secondaryTextColor</item>
-        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
-        <item name="colorSecondary">@color/secondaryColor</item>
-        <item name="colorSecondaryVariant">@color/secondaryDarkColor</item>
+        <item name="colorPrimary">@color/primaryColorNight</item>
+        <item name="colorOnPrimary">@color/primaryTextColorNight</item>
+        <item name="colorOnSecondary">@color/secondaryTextColorNight</item>
+        <item name="colorPrimaryVariant">@color/primaryDarkColorNight</item>
+        <item name="colorSecondary">@color/secondaryColorNight</item>
+        <item name="colorSecondaryVariant">@color/secondaryDarkColorNight</item>
+        <item name="android:statusBarColor" tools:targetApi="1">@color/primaryColorNight</item>
 
-        <item name="android:statusBarColor" tools:targetApi="1">@color/primaryLightColor</item>
-
-    </style>
+    </style>-->
 </resources>

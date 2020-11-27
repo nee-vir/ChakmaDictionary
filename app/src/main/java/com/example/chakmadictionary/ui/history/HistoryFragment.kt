@@ -38,23 +38,20 @@ class HistoryFragment : Fragment() {
         }
 
         binding.lifecycleOwner=this
+        binding.historyViewModel=historyViewModel
         val adapter= HistoryAdapter(dataSource)
         binding.historyList.adapter=adapter
         historyViewModel.historyList.observe(viewLifecycleOwner, Observer {
+            if(it==null|| it.isEmpty()){
+                binding.historyNotFoundImage.visibility=View.VISIBLE
+            } else{
+                binding.historyNotFoundImage.visibility=View.GONE
+            }
             adapter.submitList(it)
         })
 
         return binding.root
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        hideKeyboard()
-    }
-
-    private fun hideKeyboard(){
-        val inputManager:InputMethodManager= activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken,InputMethodManager.HIDE_NOT_ALWAYS)
-    }
 
 }

@@ -20,5 +20,17 @@
         <color name="secondaryDarkColor">#b5495b</color>
         <color name="primaryTextColor">#000000</color>
         <color name="secondaryTextColor">#000000</color>
-   
+    <color name="page_color">#F0F6F0</color>
+
+
+    //Night
+    <color name="primaryColorNight">#212121</color>
+    <color name="primaryLightColorNight">#484848</color>
+    <color name="primaryDarkColorNight">#000000</color>
+    <color name="secondaryColorNight">#212121</color>
+    <color name="secondaryLightColorNight">#484848</color>
+    <color name="secondaryDarkColorNight">#000000</color>
+    <color name="primaryTextColorNight">#ffffff</color>
+    <color name="secondaryTextColorNight">#ffffff</color>
+
 </resources>

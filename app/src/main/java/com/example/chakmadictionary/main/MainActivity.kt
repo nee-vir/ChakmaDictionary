@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.view.MenuItemCompat
@@ -111,6 +112,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToDefinitionFragment(){
+        hideKeyboard()
         val navController=findNavController(R.id.nav_host_fragment)
         val currentDestination:NavDestination=navController.currentDestination as NavDestination
         currentDestination?.let {
@@ -122,8 +124,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.welcomeFragment -> navController.navigate(R.id.action_welcomeFragment_to_definitionFragment)
 
                 R.id.aboutFragment -> navController.navigate(R.id.action_aboutFragment_to_definitionFragment)
+
             }
         }
+    }
+
+    private fun hideKeyboard(){
+        val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
 
