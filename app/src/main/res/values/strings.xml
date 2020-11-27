@@ -5,4 +5,18 @@
     <string name="defination_string">This the the body of the defination. The word will be defined in this part the screen and I know it will be fine to define here because its me</string>
     <string name="exampleSentenceOne">"Always use the right word for the right situation" <br /> "Words when chosen carefully can be powerful"</string>
     <string name="search_hint">Search the dictionary</string>
+
+    <string name="about_text">Chakma Dictionary translates Chakma words in english letters to the corresponding english word.
+    Apart from just translating, it also provides definition of the word along with examples for both the chakma word and the corresponding english word.
+    The purpose of this dictionary application is to preserve the chakma language and help people of the chakma community remain in touch with their language.
+    Many if not most of the students have to go out of state to pursue quality education and because of that they lose touch with their language and community.
+    The gap between the chakma people and their language is increasing and people are slowly starting to forget words that they once knew as a child.
+    We hope that this application will shrink the increasing gap between the chakma people and the chakma language up to some extent and, also help non-chakma people
+    learn chakma words and their meaning.</string>
+
+    <string name="about_ps">P.S. : This app is by no means complete. Due to the lack of a physical dictionary with all the chakma words in it, the team itself has to generate the words and add them
+    to the application\'s database slowly. It is a difficult and time consuming task considering the vast number of words. Therefore, we apologize in advance if you encounter any
+    inconvenience with regards to finding words or with other issues. The team will do it\'s best to provide you with the words that you desire to learn</string>
+    <string name="about_header">ABOUT</string>
+    <string name="quote_example">\"Thousands of candles can be lit from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.\" \n \n -Buddha</string>
 </resources>
