@@ -36,7 +36,7 @@ class HistoryAdapter(val dataSource:WordsDao): ListAdapter<HistoryWord, HistoryA
         fun bind(item:HistoryWord){
             binding.historyItem=item
             binding.historyWord.setOnClickListener {
-                it.findNavController().navigate(HistoryFragmentDirections.actionHistoryFragmentToDefinitionFragment(item.word!!,item.wordId!!))
+                it.findNavController().navigate(HistoryFragmentDirections.actionHistoryFragmentToDefinitionFragment(item.word!!,item.wordId!!,0))
             }
             binding.deleteHistoryButton.setOnClickListener {
                 val coroutineScope= CoroutineScope(Dispatchers.IO+ Job())

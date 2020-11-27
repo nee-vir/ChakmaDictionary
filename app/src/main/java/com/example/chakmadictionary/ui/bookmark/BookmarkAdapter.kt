@@ -32,7 +32,7 @@ class BookmarkAdapter(val dataSource: WordsDao): ListAdapter<BookmarkWord,Bookma
         fun bind(item: BookmarkWord){
             binding.bookmarkItem=item
             binding.bookmarkText.setOnClickListener {
-                it.findNavController().navigate(BookmarkFragmentDirections.actionBookmarkFragmentToDefinitionFragment(item.word!!,item.wordId))
+                it.findNavController().navigate(BookmarkFragmentDirections.actionBookmarkFragmentToDefinitionFragment(item.word!!,item.wordId,1))
             }
             binding.deleteBookmarkButton.setOnClickListener {
                 val coroutineScope= CoroutineScope(Dispatchers.IO+ Job())

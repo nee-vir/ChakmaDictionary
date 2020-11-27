@@ -52,7 +52,7 @@ class DefinationFragment : Fragment() {
         binding.lifecycleOwner=this
 
         if(args.wordId>=0){
-            definitionViewModel.retrieveFromDatabase(args.word)
+            definitionViewModel.retrieveFromDatabase(args.word,args.from)
         }
 
         binding.definitionViewModel=definitionViewModel

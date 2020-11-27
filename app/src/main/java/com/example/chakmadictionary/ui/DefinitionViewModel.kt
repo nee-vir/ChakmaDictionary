@@ -97,15 +97,19 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
 
 
 
-    fun retrieveFromDatabase(word:String?){
+    fun retrieveFromDatabase(word:String?,from:Int=-1){
         viewModelScope.launch {
             _myWord.value=dataSource.getWord(word)
             Timber.i(_myWord.value.toString())
             handleVisibility()
             _bookmarkState.value=dataSource.getBookmarkById(_myWord.value?.wordId)
             //insert history item
-            val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
-            dataSource.insertHistory(hWord)
+            //Will not add history if its coming from the history fragment or if the query word is not found
+            if(from!=0 && _myWord.value!=null){
+                val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
+                dataSource.insertHistory(hWord)
+            }
+
         }
     }
 
