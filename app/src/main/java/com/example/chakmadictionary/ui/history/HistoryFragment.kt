@@ -40,6 +40,7 @@ class HistoryFragment : Fragment() {
         binding.lifecycleOwner=this
         binding.historyViewModel=historyViewModel
         val adapter= HistoryAdapter(dataSource)
+        binding.historyList.hasFixedSize()
         binding.historyList.adapter=adapter
         historyViewModel.historyList.observe(viewLifecycleOwner, Observer {
             if(it==null|| it.isEmpty()){

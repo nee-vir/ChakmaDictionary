@@ -32,6 +32,7 @@ class BookmarkFragment : Fragment() {
         val bookmarkViewModelFactory=BookmarkViewModelFactory(application,dataSource)
         val bookmarkViewModel=ViewModelProvider(this,bookmarkViewModelFactory).get(BookmarkViewModel::class.java)
         val adapter=BookmarkAdapter(dataSource)
+        binding.bookmarkViewModel=bookmarkViewModel
         binding.bookmarkList.adapter=adapter
         bookmarkViewModel.bookmarkList.observe(viewLifecycleOwner, Observer {
             if(it==null|| it.isEmpty()){
@@ -41,11 +42,10 @@ class BookmarkFragment : Fragment() {
             }
             adapter.submitList(it)
         })
-        val destination=findNavController().currentDestination
 
 
 
-        val act=activity as AppCompatActivity
+//        val act=activity as AppCompatActivity
 //        act.supportActionBar.
 
 //        setHasOptionsMenu(true)

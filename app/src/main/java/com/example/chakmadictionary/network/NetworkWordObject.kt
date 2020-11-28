@@ -19,9 +19,8 @@ data class NetworkWord(val wordId:Long=0L,
 fun NetworkObjectContainer.asDatabaseModel():List<DatabaseWord>{
     return words.map {
         DatabaseWord(
-                wordId = it.wordId,
-            word = it.word,
-            translation = it.translation,
+            word = it.word?.toLowerCase(),
+            translation = it.translation?.toLowerCase(),
             definition = it.definition,
             example = it.example,
             example2 = it.example2,

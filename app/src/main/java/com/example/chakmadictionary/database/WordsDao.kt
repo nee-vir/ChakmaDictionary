@@ -46,6 +46,9 @@ interface WordsDao {
     @Query("DELETE FROM history_table where historyId=:hId")
     suspend fun deleteHistoryItem(hId:Long?)
 
+    @Query("DELETE FROM history_table")
+    suspend fun deleteEntireHistory()
+
 
 
 
@@ -61,5 +64,8 @@ interface WordsDao {
 
     @Query("DELETE FROM bookmark_table where wordId=:id")
     suspend fun deleteBookmark(id:Long?)
+
+    @Query("DELETE FROM bookmark_table")
+    suspend fun deleteEntireBookmark()
 
 }

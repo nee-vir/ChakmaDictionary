@@ -17,9 +17,16 @@ class HistoryViewModel(application: Application, private val datasource: WordsDa
 
   val historyList=datasource.getEntireHistory()
 
-    private val _isEmpty= MutableLiveData<Boolean>()
-    val isEmpty:LiveData<Boolean>
-    get() = _isEmpty
+//    private val _isEmpty= MutableLiveData<Boolean>()
+//    val isEmpty:LiveData<Boolean>
+//    get() = _isEmpty
+
+
+  fun deleteHistory(){
+    viewModelScope.launch {
+      datasource.deleteEntireHistory()
+    }
+  }
 
 
 

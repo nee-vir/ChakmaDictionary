@@ -12,6 +12,7 @@ import com.example.chakmadictionary.network.NetworkObjectContainer
 import com.example.chakmadictionary.network.NetworkWord
 import com.example.chakmadictionary.network.asDatabaseModel
 import com.example.chakmadictionary.utils.getCurrentTime
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -24,7 +25,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     val myWord: LiveData<DatabaseWord>
     get() = _myWord
 
-    val list= mutableListOf<NetworkWord>()
+    private val list= mutableListOf<NetworkWord>()
 
     private val _bookmarkState=MutableLiveData<Boolean>()
 
@@ -109,6 +110,9 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
                 val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
                 dataSource.insertHistory(hWord)
             }
+            word?.let {
+                addUsersQueryToFireStore(it)
+            }
 
         }
     }
@@ -141,6 +145,26 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
 
     private fun handleVisibility(){
         _wordNotFound.value = _myWord.value==null
+
+    }
+
+
+    private fun addUsersQueryToFireStore(query: String){
+
+        if(_wordNotFound.value==true){
+            val db=FirebaseFirestore.getInstance()
+            val map= hashMapOf<String,Any>(
+                    "timeStamp" to FieldValue.serverTimestamp()
+            )
+
+            db.collection("Searched Words").document(query).set(map).addOnSuccessListener {
+                Timber.i("Successfully added $query to improve the app for better user experience")
+            }.addOnFailureListener {
+                Timber.e(it,"Could not add the the query")
+            }
+        }
+
+
     }
 
 

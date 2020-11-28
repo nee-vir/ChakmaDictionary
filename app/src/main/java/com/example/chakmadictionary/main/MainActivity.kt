@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                definitionViewModel.retrieveFromDatabase(query)
+                definitionViewModel.retrieveFromDatabase(query?.toLowerCase())
                 definitionViewModel.loaded()
                 navigateToDefinitionFragment()
                 return true

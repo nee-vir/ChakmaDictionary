@@ -1,15 +1,10 @@
 package com.example.chakmadictionary.database
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 
-@Entity(tableName = "words_table")
+@Entity(tableName = "words_table",indices = [Index(value = ["word"],unique = true)])
 data class DatabaseWord constructor(
-    @PrimaryKey
-    val wordId:Long=0L,
     val word:String?=null,
     val translation: String?=null,
     val definition:String?=null,
@@ -17,7 +12,11 @@ data class DatabaseWord constructor(
     val example2: String?=null,
     val imageUrl:String?=null,
     val soundUrl:String?=null,
-    val synonyms:String?=null)
+    val synonyms:String?=null){
+
+    @PrimaryKey(autoGenerate = true)
+    var wordId:Long=0L
+}
 
 
 @Entity(tableName = "history_table")
