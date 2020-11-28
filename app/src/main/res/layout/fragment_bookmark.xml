@@ -46,7 +46,6 @@
         android:layout_marginTop="12dp"
         android:clickable="true"
         android:contentDescription="Deletes the entire history"
-        android:onClick="@{() -> bookmarkViewModel.deleteBookmark()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toStartOf="parent"

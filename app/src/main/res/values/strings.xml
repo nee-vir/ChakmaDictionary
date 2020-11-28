@@ -19,4 +19,15 @@
     inconvenience with regards to finding words or with other issues. The team will do it\'s best to provide you with the words that you desire to learn</string>
     <string name="about_header">ABOUT</string>
     <string name="quote_example">\"Thousands of candles can be lit from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.\" \n \n -Buddha</string>
+
+
+    //Dialog
+    <string name="dialog_title">Confirm Delete</string>
+    <string name="dialog_content_history">Are you sure you want to delete the entire history?</string>
+    <string name="dialog_content_bookmark">Are you sure you want to delete all the bookmarks?</string>
+    <string name="dialog_accept">Accept</string>
+    <string name="dialog_decline">Decline</string>
+
+
+
 </resources>

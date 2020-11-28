@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.ChakmaDictionary.NoActionBar">
+    <style name="Theme.ChakmaDictionary.NoActionBar" > //Had to extend App
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/primaryColor</item>

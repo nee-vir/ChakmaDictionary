@@ -36,7 +36,7 @@
         android:id="@+id/bookmarkFragment"
         tools:layout="@layout/fragment_bookmark"
         android:name="com.example.chakmadictionary.ui.bookmark.BookmarkFragment"
-        android:label="Bookmark" >
+        android:label="Bookmarks" >
         <action
             android:id="@+id/action_bookmarkFragment_to_definitionFragment"
             app:destination="@id/definitionFragment" />
