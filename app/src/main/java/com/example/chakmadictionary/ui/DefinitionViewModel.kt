@@ -157,7 +157,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
                     "timeStamp" to FieldValue.serverTimestamp()
             )
 
-            db.collection("Searched Words").document(query).set(map).addOnSuccessListener {
+            db.collection("searched_words").document(query).set(map).addOnSuccessListener {
                 Timber.i("Successfully added $query to improve the app for better user experience")
             }.addOnFailureListener {
                 Timber.e(it,"Could not add the the query")
