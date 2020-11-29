@@ -37,8 +37,8 @@ interface WordsDao {
 
     //History
     //When you want to return an observable there is no need to make the function suspend
-    @Query("SELECT*FROM history_table ORDER BY historyId DESC LIMIT 30")
-    fun getEntireHistory():LiveData<List<HistoryWord>?>
+    @Query("SELECT*FROM history_table ORDER BY historyId DESC LIMIT :limit")
+    fun getEntireHistory(limit:Int=20):LiveData<List<HistoryWord>?>
 
     @Insert(entity = HistoryWord::class,onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHistory(word:HistoryWord)
@@ -53,8 +53,8 @@ interface WordsDao {
 
 
     //Bookmark
-    @Query("SELECT*FROM bookmark_table ORDER BY time DESC")
-     fun getAllBookmarks():LiveData<List<BookmarkWord>>
+    @Query("SELECT*FROM bookmark_table ORDER BY time DESC LIMIT :limit")
+     fun getAllBookmarks(limit: Int=20):LiveData<List<BookmarkWord>>
 
     @Query("SELECT EXISTS(SELECT*FROM bookmark_table WHERE wordId=:id)")
      suspend fun getBookmarkById(id:Long?):Boolean

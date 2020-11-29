@@ -11,8 +11,9 @@
             android:title="Theme" />
         <SeekBarPreference android:title="Font Size"
             app:showSeekBarValue="true"
-            android:max="100"
-            app:min="16"
+            android:max="30"
+            android:defaultValue="14"
+            app:min="14"
             android:key="fontSize"/>
 
 
@@ -22,18 +23,19 @@
 
     <PreferenceCategory android:title="Other Settings">
 <!--        ListPreference can only take in string arrays as entries and entryValues-->
+
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/ItemsArrayEntries"
             android:entryValues="@array/ItemsArrayValues"
-            android:key="bookmarkItemNumber"
-            android:title="Bookmark Items" />
+            android:key="historyItemLimit"
+            android:title="History Item Limit" />
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/ItemsArrayEntries"
             android:entryValues="@array/ItemsArrayValues"
-            android:key="historyItemNumber"
-            android:title="History Items" />
+            android:key="bookmarkItemLimit"
+            android:title="Bookmark Item Limit" />
     </PreferenceCategory>
 
 

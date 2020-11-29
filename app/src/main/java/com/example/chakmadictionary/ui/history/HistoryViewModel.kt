@@ -2,11 +2,13 @@ package com.example.chakmadictionary.ui.history
 
 import android.app.Application
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.preference.PreferenceManager
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.HistoryWord
 import com.example.chakmadictionary.database.WordsDao
@@ -18,7 +20,10 @@ class HistoryViewModel(application: Application, private val datasource: WordsDa
 
 
 
-  val historyList=datasource.getEntireHistory()
+
+   val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application)
+  private val limit=sharedPreferences.getString("historyItemLimit","20")
+  val historyList=datasource.getEntireHistory(limit!!.toInt())
 
 //    private val _isEmpty= MutableLiveData<Boolean>()
 //    val isEmpty:LiveData<Boolean>
@@ -30,6 +35,10 @@ class HistoryViewModel(application: Application, private val datasource: WordsDa
       datasource.deleteEntireHistory()
     }
   }
+
+
+
+
 
 
 

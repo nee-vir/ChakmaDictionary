@@ -37,11 +37,8 @@ class HistoryFragment : Fragment() {
         val activity= requireNotNull(activity)
         val dataSource=WordsDatabase.getInstance(activity.application).wordsDao
         val historyViewModelFactory=HistoryViewModelFactory(activity.application,dataSource)
-        activity.run {
+
             historyViewModel=ViewModelProvider(this,historyViewModelFactory).get(HistoryViewModel::class.java)
-        }
-
-
 
         binding.lifecycleOwner=this
         binding.historyViewModel=historyViewModel
