@@ -2,13 +2,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="Category 1">
+    <PreferenceCategory android:title="Appearances">
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/themeArrayEntries"
             android:entryValues="@array/themeArrayValues"
-            android:key="list_preference_1"
-            android:title="List preference" />
+            android:key="myTheme"
+            android:title="Theme" />
         <SeekBarPreference android:title="Font Size"
             app:showSeekBarValue="true"
             android:max="100"
@@ -20,8 +20,8 @@
 
 
 
-    <PreferenceCategory android:title="Preference category">
-<!--        Listprefernc can only take in string arrays-->
+    <PreferenceCategory android:title="Other Settings">
+<!--        ListPreference can only take in string arrays as entries and entryValues-->
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/ItemsArrayEntries"

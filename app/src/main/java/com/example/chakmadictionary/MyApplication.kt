@@ -21,9 +21,11 @@ class MyApplication : Application() {
     private val job= Job()
     private val coroutineScope= CoroutineScope(Dispatchers.IO+job)
 
+
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+
     }
 
     private suspend fun retrieveWordsAndStore(){

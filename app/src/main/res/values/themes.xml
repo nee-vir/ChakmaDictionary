@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.ChakmaDictionary.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" > //Had to extend App
+    <style name="Theme.ChakmaDictionary.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/primaryColor</item>
@@ -41,6 +41,52 @@
         <item name="android:statusBarColor" tools:targetApi="1">@color/primaryDarkColorNight</item>
 
     </style>
+
+    <style name="Theme.ChakmaDictionary.Cream">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/primaryColorCream</item>
+        <item name="colorOnPrimary">@color/primaryTextColorCream</item>
+        <item name="colorOnSecondary">@color/secondaryTextColorCream</item>
+        <item name="colorPrimaryVariant">@color/primaryLightColorCream</item>
+        <item name="colorSecondary">@color/secondaryColorCream</item>
+        <item name="colorSecondaryVariant">@color/secondaryLightColorCream</item>
+
+        <item name="android:statusBarColor" tools:targetApi="1">@color/primaryDarkColorCream</item>
+
+    </style>
+
+    <style name="Theme.ChakmaDictionary.Purple">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/primaryColorPurple</item>
+        <item name="colorOnPrimary">@color/primaryTextColorPurple</item>
+        <item name="colorOnSecondary">@color/secondaryTextColorPurple</item>
+        <item name="colorPrimaryVariant">@color/primaryLightColorPurple</item>
+        <item name="colorSecondary">@color/secondaryColorPurple</item>
+        <item name="colorSecondaryVariant">@color/secondaryLightColorPurple</item>
+
+        <item name="android:statusBarColor" tools:targetApi="1">@color/primaryDarkColorPurple</item>
+
+    </style>
+
+
+    <style name="Theme.ChakmaDictionary.Blue">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/primaryColorBlue</item>
+        <item name="colorOnPrimary">@color/primaryTextColorBlue</item>
+        <item name="colorOnSecondary">@color/secondaryTextColorBlue</item>
+        <item name="colorPrimaryVariant">@color/primaryLightColorBlue</item>
+        <item name="colorSecondary">@color/secondaryColorBlue</item>
+        <item name="colorSecondaryVariant">@color/secondaryLightColorBlue</item>
+
+        <item name="android:statusBarColor" tools:targetApi="1">@color/primaryDarkColorBlue</item>
+
+    </style>
+
+
+
 
     <style name="Theme.ChakmaDictionary.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

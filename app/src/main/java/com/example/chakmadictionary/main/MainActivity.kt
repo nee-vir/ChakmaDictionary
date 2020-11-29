@@ -3,6 +3,8 @@ package com.example.chakmadictionary.main
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,6 +27,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDao
 import com.example.chakmadictionary.database.WordsDatabase
@@ -39,8 +42,21 @@ class MainActivity : AppCompatActivity() {
     lateinit var definitionViewModel: DefinitionViewModel
     lateinit var dataSource:WordsDao
     lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var sharedPreferences: SharedPreferences
+
+
+    val listener:SharedPreferences.OnSharedPreferenceChangeListener=SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+        if(key=="myTheme"){
+            this.finish()
+            startActivity(intent)
+        }
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setMyTheme()//Theme has to be set before setContentView, once the view is inflated the theme cannot be changed
         val binding=DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
 //        setContentView(R.layout.activity_main)
         val application= requireNotNull(this.application)
@@ -59,6 +75,7 @@ class MainActivity : AppCompatActivity() {
             this.finish()
             return@setOnMenuItemClickListener true
         }
+
 
 
     }
@@ -133,6 +150,38 @@ class MainActivity : AppCompatActivity() {
         val inputManager: InputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
+
+
+    private fun setMyTheme(){
+        sharedPreferences=PreferenceManager.getDefaultSharedPreferences(this)
+        Timber.i(sharedPreferences.getString("myTheme","0"))
+        when(sharedPreferences.getString("myTheme","0")){
+            "0" -> setTheme(R.style.Theme_ChakmaDictionary_NoActionBar)
+            "1" -> setTheme(R.style.Theme_ChakmaDictionary_Cream)
+            "2" -> setTheme(R.style.Theme_ChakmaDictionary_Purple)
+            "3" -> setTheme(R.style.Theme_ChakmaDictionary_DarkMode)
+            "4" -> setTheme(R.style.Theme_ChakmaDictionary_Blue)
+        }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        sharedPreferences.registerOnSharedPreferenceChangeListener(listener)
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener)
+    }
+
+
+
+
+
+
+
 
 
 

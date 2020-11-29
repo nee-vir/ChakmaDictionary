@@ -23,7 +23,7 @@
     <color name="page_color">#F0F6F0</color>
 
 
-    //Night
+    //Dark
     <color name="primaryColorNight">#212121</color>
     <color name="primaryLightColorNight">#484848</color>
     <color name="primaryDarkColorNight">#000000</color>
@@ -32,5 +32,35 @@
     <color name="secondaryDarkColorNight">#000000</color>
     <color name="primaryTextColorNight">#ffffff</color>
     <color name="secondaryTextColorNight">#ffffff</color>
+
+
+    //Dark Cream
+        <color name="primaryColorCream">#ef9a9a</color>
+        <color name="primaryLightColorCream">#ffcccb</color>
+        <color name="primaryDarkColorCream">#ba6b6c</color>
+        <color name="secondaryColorCream">#b39ddb</color>
+        <color name="secondaryLightColorCream">#e6ceff</color>
+        <color name="secondaryDarkColorCream">#836fa9</color>
+        <color name="primaryTextColorCream">#000000</color>
+        <color name="secondaryTextColorCream">#000000</color>
+
+    <color name="primaryColorPurple">#9575cd</color>
+    <color name="primaryLightColorPurple">#c7a4ff</color>
+    <color name="primaryDarkColorPurple">#65499c</color>
+    <color name="secondaryColorPurple">#f48fb1</color>
+    <color name="secondaryLightColorPurple">#ffc1e3</color>
+    <color name="secondaryDarkColorPurple">#bf5f82</color>
+    <color name="primaryTextColorPurple">#000000</color>
+    <color name="secondaryTextColorPurple">#000000</color>
+
+    <color name="primaryColorBlue">#90caf9</color>
+    <color name="primaryLightColorBlue">#c3fdff</color>
+    <color name="primaryDarkColorBlue">#5d99c6</color>
+    <color name="secondaryColorBlue">#82b1ff</color>
+    <color name="secondaryLightColorBlue">#b6e3ff</color>
+    <color name="secondaryDarkColorBlue">#4d82cb</color>
+    <color name="primaryTextColorBlue">#000000</color>
+    <color name="secondaryTextColorBlue">#000000</color>
+
 
 </resources>

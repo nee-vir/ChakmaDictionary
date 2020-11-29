@@ -61,18 +61,18 @@
 
     <string-array name="themeArrayEntries">
         <item>Default</item>
-        <item>Pink</item>
-        <item>Blue</item>
+        <item>Cream</item>
+        <item>Purple</item>
         <item>Dark</item>
-        <item>Red</item>
+        <item>Blue</item>
     </string-array>
 
     <string-array name="themeArrayValues">
-        <item>Theme.ChakmaDictionary.NoActionBar</item>
-        <item>empty</item>
-        <item>empty</item>
-        <item>Theme.ChakmaDictionary.DarkMode</item>
-        <item>empty</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
 
 

@@ -14,4 +14,5 @@ class MySettingsFragment :PreferenceFragmentCompat(){
         setPreferencesFromResource(R.xml.preferences,rootKey)
 
     }
+
 }
