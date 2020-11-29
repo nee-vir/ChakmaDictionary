@@ -12,9 +12,16 @@
         <SeekBarPreference android:title="Font Size"
             app:showSeekBarValue="true"
             android:max="30"
-            android:defaultValue="14"
+            android:defaultValue="16"
             app:min="14"
             android:key="fontSize"/>
+
+        <SeekBarPreference android:title="Header Font Size"
+            app:showSeekBarValue="true"
+            android:max="40"
+            android:defaultValue="20"
+            app:min="16"
+            android:key="headerFontSize"/>
 
 
     </PreferenceCategory>

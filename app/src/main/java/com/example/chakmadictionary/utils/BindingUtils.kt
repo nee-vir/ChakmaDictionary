@@ -3,7 +3,9 @@ package com.example.chakmadictionary.utils
 import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.example.chakmadictionary.network.Quote
 
 @BindingAdapter("checkboxState")
 fun setCheckboxState(checkBox: CheckBox,state: Boolean=false){
@@ -33,6 +35,10 @@ fun setViewVisibility(view:ImageView,wordNotFound: Boolean){
         view.visibility=View.GONE
     }
 }
+
+
+
+
 
 
 

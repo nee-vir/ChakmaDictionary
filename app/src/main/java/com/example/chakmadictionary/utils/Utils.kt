@@ -1,7 +1,9 @@
 package com.example.chakmadictionary.utils
 
 import android.os.Build
+import android.widget.TextView
 import androidx.annotation.RequiresApi
+import com.example.chakmadictionary.network.Quote
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -19,6 +21,18 @@ public fun getCurrentTime(): String{
         return ""
     }
 
+
+}
+
+
+
+//Extensions
+
+fun TextView.quoteFormat(quote: Quote?){
+    quote?.let {
+        val formatedQuote=quote.quote+"\n\n- "+quote.author
+        text=formatedQuote
+    }
 
 }
 

@@ -13,7 +13,7 @@ data class NetworkWord(val wordId:Long=0L,
                        val example2: String?=null,
                        val imageUrl:String?=null,
                        val soundUrl:String?=null,
-                       val synonyms:List<String>?=null)
+                       val synonyms:String?=null)
 
 
 fun NetworkObjectContainer.asDatabaseModel():List<DatabaseWord>{
@@ -21,11 +21,16 @@ fun NetworkObjectContainer.asDatabaseModel():List<DatabaseWord>{
         DatabaseWord(
             word = it.word?.toLowerCase(),
             translation = it.translation?.toLowerCase(),
-            definition = it.definition,
-            example = it.example,
-            example2 = it.example2,
-            imageUrl = it.imageUrl,
-            soundUrl = it.soundUrl
+            definition = it.definition.toString(),
+            example = it.example.toString(),
+            example2 = it.example2.toString(),
+            imageUrl = it.imageUrl.toString(),
+            soundUrl = it.soundUrl.toString(),
+            synonyms = it.synonyms?.toLowerCase()
         )
     }
 }
+
+
+data class Quote(val quote:String?=null,
+                 val author:String?=null)

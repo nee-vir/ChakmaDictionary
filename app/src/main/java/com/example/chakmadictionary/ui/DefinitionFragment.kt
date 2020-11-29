@@ -2,6 +2,7 @@ package com.example.chakmadictionary.ui
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
@@ -12,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.preference.PreferenceManager
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.databinding.FragmentDefinitionBinding
@@ -21,6 +23,7 @@ import kotlinx.coroutines.*
 class DefinationFragment : Fragment() {
 
     lateinit var definitionViewModel:DefinitionViewModel
+    private lateinit var sharedPreferences: SharedPreferences
 
     private val args:DefinationFragmentArgs by navArgs()
 
@@ -48,8 +51,11 @@ class DefinationFragment : Fragment() {
             definitionViewModel=ViewModelProvider(this,viewModelFactory).get(DefinitionViewModel::class.java)//?: throw Exception("Invalid Activity")
         }
 
-
         binding.lifecycleOwner=this
+
+        setFontSize(binding)
+
+
 
         if(args.wordId>=0){
             definitionViewModel.retrieveFromDatabase(args.word,args.from)
@@ -84,23 +90,23 @@ class DefinationFragment : Fragment() {
     }
 
 
-    /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.search_menu,menu)
-        val searchManager= activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView=menu.findItem(R.id.app_bar_search)?.actionView as SearchView
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
-        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                definitionViewModel.retrieveFromDatabase(query)
-                return true
-            }
+   private fun setFontSize( binding: FragmentDefinitionBinding){
+       sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context)
+       val sizeOfFont=sharedPreferences.getInt("fontSize",16) //Seekbar stores values as "String" to "Int" where key is string and value is int
+       val sizeOfHeader= sharedPreferences.getInt("headerFontSize",20)
+       binding.wordText.textSize=sizeOfHeader.toFloat()+10
+       binding.chakmaExampleLabel.textSize=sizeOfHeader.toFloat()
+       binding.chakmaExampleText.textSize=sizeOfFont.toFloat()
+       binding.definitionText.textSize=sizeOfFont.toFloat()
+       binding.definitionLabel.textSize=sizeOfHeader.toFloat()
+       binding.englishLabel.textSize=sizeOfHeader.toFloat()
+       binding.translationText.textSize=sizeOfHeader.toFloat()
+       binding.englishExampleLabel.textSize=sizeOfHeader.toFloat()
+       binding.englishExampleText.textSize=sizeOfFont.toFloat()
+       binding.synonymsLabel.textSize=sizeOfHeader.toFloat()
+       binding.synonymsText.textSize=sizeOfFont.toFloat()
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
-    }*/
+   }
 
 
 }

@@ -18,7 +18,7 @@
     to the application\'s database slowly. It is a difficult and time consuming task considering the vast number of words. Therefore, we apologize in advance if you encounter any
     inconvenience with regards to finding words or with other issues. The team will do it\'s best to provide you with the words that you desire to learn</string>
     <string name="about_header">ABOUT</string>
-    <string name="quote_example">\"Thousands of candles can be lit from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.\" \n \n -Buddha</string>
+    <string name="quote_example">\"Thousands of candles can be lit from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.\" \n \n - Buddha</string>
 
 
     //Dialog
@@ -29,6 +29,10 @@
     <string name="dialog_decline">Decline</string>
     <string name="no_history_items_found_content_desc">No history items found</string>
     <string name="deletes_the_entire_history_description">Deletes the entire history</string>
+
+
+
+    //DefinitionFragment
     <string name="english_label">English:</string>
     <string name="definition_label_string">Definition:</string>
     <string name="example_in_english_string">Example in english:</string>
@@ -42,6 +46,7 @@
     <string name="about_drawer">About</string>
     <string name="settings_drawer">Settings</string>
     <string name="exit_drawer">Exit</string>
+    <string name="synonyms_text">Synonyms:</string>
 
 
     <string-array name="ItemsArrayEntries">

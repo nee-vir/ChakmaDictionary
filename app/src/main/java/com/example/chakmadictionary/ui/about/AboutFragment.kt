@@ -37,7 +37,7 @@ class AboutFragment : Fragment() {
         val binding=FragmentAboutBinding.inflate(inflater)
         sharedPreferences=PreferenceManager.getDefaultSharedPreferences(context)
         val sizeOfFont=sharedPreferences.getInt("fontSize",14) //Seekbar stores values as "String" to "Int" where key is string and value is int
-        binding.psAbout.textSize=sizeOfFont.toFloat()
+        binding.aboutHeader.textSize=sizeOfFont.toFloat()
         binding.aboutBody.textSize=sizeOfFont.toFloat()
         binding.psAbout.textSize=sizeOfFont.toFloat()
         return binding.root

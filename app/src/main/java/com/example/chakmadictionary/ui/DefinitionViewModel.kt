@@ -10,10 +10,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.chakmadictionary.database.*
 import com.example.chakmadictionary.network.NetworkObjectContainer
 import com.example.chakmadictionary.network.NetworkWord
+import com.example.chakmadictionary.network.Quote
 import com.example.chakmadictionary.network.asDatabaseModel
 import com.example.chakmadictionary.utils.getCurrentTime
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -41,6 +45,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     private val _wordNotFound=MutableLiveData<Boolean>()
     val wordNotFound:LiveData<Boolean>
     get() = _wordNotFound
+
 
 
     //Data is retrived from firestore and stored to the database from the application class
@@ -156,6 +161,11 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
 
 
     }
+
+
+
+
+
 
 
 
