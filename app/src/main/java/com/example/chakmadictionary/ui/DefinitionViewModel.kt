@@ -25,7 +25,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     val myWord: LiveData<DatabaseWord>
     get() = _myWord
 
-    private val list= mutableListOf<NetworkWord>()
+//    private val list= mutableListOf<NetworkWord>()
 
     private val _bookmarkState=MutableLiveData<Boolean>()
 
@@ -41,16 +41,11 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
     private val _wordNotFound=MutableLiveData<Boolean>()
     val wordNotFound:LiveData<Boolean>
     get() = _wordNotFound
-//    private val _bookMarkWord= MutableLiveData<BookmarkWord>()
-//
-//    private val bookmarkWord:LiveData<BookmarkWord>
-//    get() = _bookMarkWord
 
-//    val job= Job()
 
-//    val coroutineScope=(Dispatchers.Main+ Job())
+    //Data is retrived from firestore and stored to the database from the application class
 
-    private suspend  fun retrieveWordsFromFirebase(){
+    /*private suspend  fun retrieveWordsFromFirebase(){
         val db=FirebaseFirestore.getInstance()
         db.collection("words").get().addOnSuccessListener { result ->
             for(document in result){
@@ -61,24 +56,19 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
                 val wordsContainer=NetworkObjectContainer(list)
                 dataSource.insertAll(wordsContainer.asDatabaseModel())
             }
-//            viewModelScope.launch {
-//                val dbObject=datasource.getAllWords()
-//                Timber.i(dbObject.size.toString())
-//            }
-
         }.addOnFailureListener {
             Timber.d("Error getting documents : $it")
         }
-    }
+    }*/
 
     val handled=MutableLiveData<Boolean>()
     init {
         handled.value=false
         _showProgressBar.value=false
         _wordNotFound.value=false
-        viewModelScope.launch {
+        /*viewModelScope.launch {
             retrieveWordsFromFirebase()
-        }
+        }*/
 
     }
 

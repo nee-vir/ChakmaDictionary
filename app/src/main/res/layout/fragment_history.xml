@@ -52,7 +52,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline7"
             app:srcCompat="@drawable/ic_baseline_delete_24"
-            android:contentDescription="Deletes the entire history" />
+            android:contentDescription="@string/deletes_the_entire_history_desc_string"
+            android:focusable="true" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"

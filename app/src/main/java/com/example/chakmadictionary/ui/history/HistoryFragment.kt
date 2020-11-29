@@ -51,8 +51,10 @@ class HistoryFragment : Fragment() {
         historyViewModel.historyList.observe(viewLifecycleOwner, Observer {
             if(it==null|| it.isEmpty()){
                 binding.historyNotFoundImage.visibility=View.VISIBLE
+                binding.clearHistoryButton.visibility=View.GONE
             } else{
                 binding.historyNotFoundImage.visibility=View.GONE
+                binding.clearHistoryButton.visibility=View.VISIBLE
             }
             adapter.submitList(it)
         })

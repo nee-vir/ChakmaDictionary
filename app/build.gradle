@@ -69,6 +69,10 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
+    //Preferences
+    def preference_version = "1.1.1"
+    implementation "androidx.preference:preference-ktx:$preference_version"
+
 
 
     //Coroutines

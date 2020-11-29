@@ -36,14 +36,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.283"
-        app:srcCompat="@drawable/ic_chakma_dictionary_icon" />
+        app:srcCompat="@drawable/ic_chakma_dictionary_icon"
+        android:contentDescription="@string/chakma_dictionary_image_desc" />
 
     <TextView
         android:id="@+id/dictionaryWelcomeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="124dp"
-        android:text="Chakma Dictionary"
+        android:text="@string/chakma_dictionary_label_string"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

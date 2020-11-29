@@ -26,7 +26,7 @@
             tools:visibility="visible"
             app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:button="@drawable/bookmark_selector"
-            android:text="Bookmark Word"
+            tools:text="Bookmark Word"
             android:onClick="@{()->definitionViewModel.onBookmark(definitionViewModel.myWord.wordId,definitionViewModel.myWord.word)}"
             app:checkboxState="@{definitionViewModel.bookMarkState}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/EnglishLabel"
+            android:id="@+id/englishLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -60,7 +60,7 @@
             app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:text="English:"
+            android:text="@string/english_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wordText" />
 
@@ -75,9 +75,9 @@
             tools:text="Sobhdo"
             android:text="@{definitionViewModel.myWord.translation}"
             android:textSize="25sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/EnglishLabel"
+            app:layout_constraintBaseline_toBaselineOf="@+id/englishLabel"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/EnglishLabel" />
+            app:layout_constraintStart_toEndOf="@+id/englishLabel" />
 
         <TextView
             android:id="@+id/definitionLabel"
@@ -89,9 +89,9 @@
             app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="Definition:"
+            android:text="@string/definition_label_string"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/EnglishLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/englishLabel" />
 
         <TextView
             android:id="@+id/definitionText"
@@ -120,7 +120,7 @@
             app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:text="Example in english:"
+            android:text="@string/example_in_english_string"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/definitionText" />
 
@@ -149,7 +149,7 @@
             app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:text="Example in chakma:"
+            android:text="@string/example_in_chakma_string"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/englishExampleText" />
         <TextView

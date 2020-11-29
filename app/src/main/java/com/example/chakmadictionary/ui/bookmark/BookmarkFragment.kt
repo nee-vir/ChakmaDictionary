@@ -41,8 +41,10 @@ class BookmarkFragment : Fragment() {
         bookmarkViewModel.bookmarkList.observe(viewLifecycleOwner, Observer {
             if(it==null|| it.isEmpty()){
                 binding.bookmarkNotFoundImage.visibility=View.VISIBLE
+                binding.clearBookmarkButton.visibility=View.GONE
             } else{
                 binding.bookmarkNotFoundImage.visibility=View.GONE
+                binding.clearBookmarkButton.visibility=View.VISIBLE
             }
             adapter.submitList(it)
         })

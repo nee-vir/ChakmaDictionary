@@ -27,7 +27,53 @@
     <string name="dialog_content_bookmark">Are you sure you want to delete all the bookmarks?</string>
     <string name="dialog_accept">Accept</string>
     <string name="dialog_decline">Decline</string>
+    <string name="no_history_items_found_content_desc">No history items found</string>
+    <string name="deletes_the_entire_history_description">Deletes the entire history</string>
+    <string name="english_label">English:</string>
+    <string name="definition_label_string">Definition:</string>
+    <string name="example_in_english_string">Example in english:</string>
+    <string name="example_in_chakma_string">Example in chakma:</string>
+    <string name="deletes_the_entire_history_desc_string">Deletes the entire history</string>
+    <string name="chakma_dictionary_image_desc">Chakma Dictionary</string>
+    <string name="chakma_dictionary_label_string">Chakma Dictionary</string>
+    <string name="home_drawer">Home</string>
+    <string name="history_drawer">History</string>
+    <string name="bookmarks_drawer">Bookmarks</string>
+    <string name="about_drawer">About</string>
+    <string name="settings_drawer">Settings</string>
+    <string name="exit_drawer">Exit</string>
 
+
+    <string-array name="ItemsArrayEntries">
+        <item>10 Items</item>
+        <item>20 Items</item>
+        <item>30 Items</item>
+        <item>40 Items</item>
+        <item>50 items</item>
+    </string-array>
+    <string-array name="ItemsArrayValues">
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+    </string-array>
+
+    <string-array name="themeArrayEntries">
+        <item>Default</item>
+        <item>Pink</item>
+        <item>Blue</item>
+        <item>Dark</item>
+        <item>Red</item>
+    </string-array>
+
+    <string-array name="themeArrayValues">
+        <item>Theme.ChakmaDictionary.NoActionBar</item>
+        <item>empty</item>
+        <item>empty</item>
+        <item>Theme.ChakmaDictionary.DarkMode</item>
+        <item>empty</item>
+    </string-array>
 
 
 </resources>

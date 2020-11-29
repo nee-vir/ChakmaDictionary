@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.ChakmaDictionary.NoActionBar" > //Had to extend App
+    <style name="Theme.ChakmaDictionary.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" > //Had to extend App
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/primaryColor</item>
@@ -25,6 +25,20 @@
         <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
 
         <item name="android:statusBarColor" tools:targetApi="1">@color/primaryDarkColor</item>
+
+    </style>
+
+    <style name="Theme.ChakmaDictionary.DarkMode">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/primaryColorNight</item>
+        <item name="colorOnPrimary">@color/primaryTextColorNight</item>
+        <item name="colorOnSecondary">@color/secondaryTextColorNight</item>
+        <item name="colorPrimaryVariant">@color/primaryLightColorNight</item>
+        <item name="colorSecondary">@color/secondaryColorNight</item>
+        <item name="colorSecondaryVariant">@color/secondaryLightColorNight</item>
+
+        <item name="android:statusBarColor" tools:targetApi="1">@color/primaryDarkColorNight</item>
 
     </style>
 

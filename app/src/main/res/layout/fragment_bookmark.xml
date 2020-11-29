@@ -31,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:contentDescription="@string/no_history_items_found_content_desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,12 +46,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:clickable="true"
-        android:contentDescription="Deletes the entire history"
+        android:contentDescription="@string/deletes_the_entire_history_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:srcCompat="@drawable/ic_baseline_delete_24" />
+        app:srcCompat="@drawable/ic_baseline_delete_24"
+        android:focusable="true" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"

@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 
-@Database(entities = [DatabaseWord::class,HistoryWord::class,BookmarkWord::class],version = 5)
+@Database(entities = [DatabaseWord::class,HistoryWord::class,BookmarkWord::class],version = 6)
 abstract class WordsDatabase(): RoomDatabase() {
     abstract val wordsDao:WordsDao
 

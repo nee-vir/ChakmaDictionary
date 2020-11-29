@@ -4,22 +4,26 @@
     <item
         android:id="@+id/welcomeFragment"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home"/>
+        android:title="@string/home_drawer"/>
 
     <item
         android:id="@+id/historyFragment"
-        android:title="History"
+        android:title="@string/history_drawer"
         android:icon="@drawable/ic_baseline_history_24"/>
     <item
         android:id="@+id/bookmarkFragment"
-        android:title="Bookmarks"
+        android:title="@string/bookmarks_drawer"
         android:icon="@drawable/ic_baseline_bookmarks_24"/>
     <item
         android:id="@+id/aboutFragment"
-        android:title="About"
+        android:title="@string/about_drawer"
         android:icon="@drawable/ic_baseline_article_24"/>
     <item
+        android:id="@+id/mySettingsFragment"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/settings_drawer" />
+    <item
         android:id="@+id/exit_item"
-        android:title="Exit"
+        android:title="@string/exit_drawer"
         android:icon="@drawable/ic_baseline_exit_to_app_24"/>
 </menu>

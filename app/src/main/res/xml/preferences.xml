@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="Category 1">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/themeArrayEntries"
+            android:entryValues="@array/themeArrayValues"
+            android:key="list_preference_1"
+            android:title="List preference" />
+        <SeekBarPreference android:title="Font Size"
+            app:showSeekBarValue="true"
+            android:max="100"
+            app:min="16"
+            android:key="fontSize"/>
+
+
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory android:title="Preference category">
+<!--        Listprefernc can only take in string arrays-->
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/ItemsArrayEntries"
+            android:entryValues="@array/ItemsArrayValues"
+            android:key="bookmarkItemNumber"
+            android:title="Bookmark Items" />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/ItemsArrayEntries"
+            android:entryValues="@array/ItemsArrayValues"
+            android:key="historyItemNumber"
+            android:title="History Items" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

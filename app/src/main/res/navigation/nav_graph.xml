@@ -59,4 +59,8 @@
             android:id="@+id/action_aboutFragment_to_definitionFragment"
             app:destination="@id/definitionFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mySettingsFragment"
+        android:name="com.example.chakmadictionary.ui.settings.MySettingsFragment"
+        android:label="Settings" />
 </navigation>

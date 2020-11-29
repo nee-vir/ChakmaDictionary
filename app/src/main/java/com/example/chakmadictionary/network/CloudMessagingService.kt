@@ -29,8 +29,12 @@ class CloudMessagingService : FirebaseMessagingService() {
         sendNotification(notifi?.title,notifi?.body)
     }
 
+    override fun onNewToken(p0: String) {
+        super.onNewToken(p0)
+    }
 
-    fun sendNotification(title:String?,message:String?){
+
+    private fun sendNotification(title:String?, message:String?){
 
         val intent=Intent(this,MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
