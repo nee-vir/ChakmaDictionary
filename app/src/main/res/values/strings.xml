@@ -47,14 +47,16 @@
     <string name="settings_drawer">Settings</string>
     <string name="exit_drawer">Exit</string>
     <string name="synonyms_text">Synonyms:</string>
+    <string name="delete_history_item_content_desc">delete history item</string>
+    <string name="delete_bookmark_item_content_desc">delete bookmark item</string>
 
 
     <string-array name="ItemsArrayEntries">
-        <item>10 Items</item>
-        <item>20 Items</item>
-        <item>30 Items</item>
-        <item>40 Items</item>
-        <item>50 items</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
     </string-array>
     <string-array name="ItemsArrayValues">
         <item>10</item>

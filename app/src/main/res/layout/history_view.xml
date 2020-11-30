@@ -11,43 +11,44 @@
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingStart="10dp"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/history_word"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
         android:text="@{historyItem.word}"
-        tools:text="Word"
         android:textSize="18sp"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Word" />
 
     <TextView
         android:id="@+id/history_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:textStyle="italic"
-        tools:text="Time"
+        android:gravity="center_vertical"
         android:text="@{historyItem.searchTime}"
-        app:layout_constraintBaseline_toBaselineOf="@+id/history_word"
+        android:textStyle="italic"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toEndOf="@+id/history_word" />
-
-    <Button
-        android:id="@+id/deleteHistoryButton"
-        style="@style/DeleteButtonStyle"
-        android:text="X"
-        app:layout_constraintBaseline_toBaselineOf="@+id/history_time"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/history_word"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Time" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="334dp" />
@@ -56,17 +57,35 @@
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="189dp" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
         android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deleteHistoryButton" />
+        app:layout_constraintTop_toBottomOf="@+id/history_word" />
+
+    <ImageButton
+        android:id="@+id/deleteHistoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/delete_history_item_content_desc"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:tint="@color/secondaryColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/history_time"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

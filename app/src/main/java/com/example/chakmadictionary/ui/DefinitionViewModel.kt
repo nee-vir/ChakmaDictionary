@@ -66,9 +66,9 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
         }
     }*/
 
-    val handled=MutableLiveData<Boolean>()
+//    val handled=MutableLiveData<Boolean>()
     init {
-        handled.value=false
+//        handled.value=false
         _showProgressBar.value=false
         _wordNotFound.value=false
         /*viewModelScope.launch {

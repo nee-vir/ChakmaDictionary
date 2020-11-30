@@ -56,24 +56,21 @@ class DefinationFragment : Fragment() {
         setFontSize(binding)
 
 
-
+        //If the transition is from bookmark or history fragment
         if(args.wordId>=0){
             definitionViewModel.retrieveFromDatabase(args.word,args.from)
         }
 
         binding.definitionViewModel=definitionViewModel
-        /*lifecycleScope.launch {
-            definitionViewModel.retrieveWords()
-        }
-        definitionViewModel.retrieveFromDatabase("Baluk")*/
-        definitionViewModel.myWord.observe(viewLifecycleOwner, Observer {
+
+       /* definitionViewModel.myWord.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context,"The word changed",Toast.LENGTH_SHORT).show()
         })
 
-//
+//For testing
         definitionViewModel.handled.observe(viewLifecycleOwner, Observer {
             Toast.makeText(this.context,"Working",Toast.LENGTH_SHORT).show()
-        })
+        })*/
 
         definitionViewModel.showProgressBar.observe(viewLifecycleOwner, Observer {
             if(it){
