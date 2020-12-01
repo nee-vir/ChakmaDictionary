@@ -37,6 +37,27 @@ fun setViewVisibility(view:ImageView,wordNotFound: Boolean){
 }
 
 
+@BindingAdapter("definitionFormat")
+fun formatDefinition(textView: TextView,definition:String?){
+    //If you don't provide null check ,it will crash
+    val list=definition?.split("###")
+    var newString=""
+    if(list!=null){
+        val size=list.size
+        var counter=1 // We have the counter to avoid the unnecessary new added lines at the end of the loop
+        for (def in list){
+            newString+=def
+            if(counter!=size){
+                newString+="\n\n"
+            }
+            counter++
+        }
+        textView.text=newString
+    }
+
+}
+
+
 
 
 
