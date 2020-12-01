@@ -2,6 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <PreferenceCategory android:title="Appearances">
         <ListPreference
             android:defaultValue="1"
@@ -44,6 +45,17 @@
             android:key="bookmarkItemLimit"
             android:title="Bookmark Item Limit" />
     </PreferenceCategory>
+
+    <PreferenceCategory android:title="Database">
+
+        <Preference android:key="downloadData" android:title="Download Words"
+            android:summary="Click here to get the latest words"
+            />
+
+
+    </PreferenceCategory>
+
+
 
 
 </PreferenceScreen>

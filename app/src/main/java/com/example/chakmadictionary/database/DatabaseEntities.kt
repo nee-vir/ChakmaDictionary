@@ -3,7 +3,7 @@ package com.example.chakmadictionary.database
 import androidx.room.*
 
 
-@Entity(tableName = "words_table",indices = [Index(value = ["word"],unique = true)])
+@Entity(tableName = "words_table",indices = [Index(value = ["word","translation"],unique = true)])
 data class DatabaseWord constructor(
     val word:String?=null,
     val translation: String?=null,

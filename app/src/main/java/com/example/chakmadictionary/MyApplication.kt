@@ -1,8 +1,10 @@
 package com.example.chakmadictionary
 
 import android.app.Application
+import android.content.SharedPreferences
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import com.example.chakmadictionary.database.WordsDao
 import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.network.NetworkObjectContainer
@@ -47,7 +49,14 @@ class MyApplication : Application() {
     init {
         coroutineScope.launch {
             db=WordsDatabase.getInstance(applicationContext).wordsDao
-            retrieveWordsAndStore()
+            val prefs:SharedPreferences=PreferenceManager.getDefaultSharedPreferences(this@MyApplication)
+            if(!prefs.getBoolean("firstTime",false)){
+                retrieveWordsAndStore()
+                val editor=prefs.edit()
+                editor.putBoolean("firstTime",true)
+                editor.apply()
+            }
+
         }
     }
 

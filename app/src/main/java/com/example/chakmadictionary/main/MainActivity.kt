@@ -27,6 +27,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDao
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             this.finish()
             return@setOnMenuItemClickListener true
         }
+
 
 
 
