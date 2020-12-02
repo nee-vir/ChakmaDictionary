@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.chakmadictionary.R
 import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.databinding.FragmentBookmarkBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import timber.log.Timber
 
@@ -25,6 +27,7 @@ class BookmarkFragment : Fragment() {
     }
 
     lateinit var bookmarkViewModel: BookmarkViewModel
+    private lateinit var mAdView:AdView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +55,9 @@ class BookmarkFragment : Fragment() {
         binding.clearBookmarkButton.setOnClickListener {
             showDialog()
         }
+        mAdView=binding.adView
+        val adRequest:AdRequest=AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
 
         return binding.root
