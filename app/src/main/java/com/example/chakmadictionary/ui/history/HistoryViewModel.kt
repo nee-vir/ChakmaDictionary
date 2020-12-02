@@ -22,7 +22,7 @@ class HistoryViewModel(application: Application, private val datasource: WordsDa
 
 
    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application)
-  private val limit=sharedPreferences.getString("historyItemLimit","20")
+  private val limit=sharedPreferences.getString("historyItemLimit","10")
   val historyList=datasource.getEntireHistory(limit!!.toInt())
 
 //    private val _isEmpty= MutableLiveData<Boolean>()

@@ -33,13 +33,13 @@
 <!--        ListPreference can only take in string arrays as entries and entryValues-->
 
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="10"
             android:entries="@array/ItemsArrayEntries"
             android:entryValues="@array/ItemsArrayValues"
             android:key="historyItemLimit"
             android:title="History Item Limit" />
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="10"
             android:entries="@array/ItemsArrayEntries"
             android:entryValues="@array/ItemsArrayValues"
             android:key="bookmarkItemLimit"
@@ -48,7 +48,7 @@
 
     <PreferenceCategory android:title="Database">
 
-        <Preference android:key="downloadData" android:title="Download Words"
+        <Preference android:key="downloadData" android:title="Download Resources"
             android:summary="Click here to get the latest words"
             />
 

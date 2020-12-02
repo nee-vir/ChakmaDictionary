@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class BookmarkViewModel(application: Application,private val dataSource:WordsDao) : AndroidViewModel(application) {
 
     private val sharedPreferences =PreferenceManager.getDefaultSharedPreferences(application)
-    private val limit=sharedPreferences.getString("bookmarkItemLimit","20")
+    private val limit=sharedPreferences.getString("bookmarkItemLimit","10")
 
     val bookmarkList=dataSource.getAllBookmarks(limit!!.toInt())
 

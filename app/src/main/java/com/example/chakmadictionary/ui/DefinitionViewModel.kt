@@ -2,22 +2,14 @@ package com.example.chakmadictionary.ui
 
 import android.app.Application
 import android.content.Intent
-import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.chakmadictionary.database.*
-import com.example.chakmadictionary.network.NetworkObjectContainer
-import com.example.chakmadictionary.network.NetworkWord
-import com.example.chakmadictionary.network.Quote
-import com.example.chakmadictionary.network.asDatabaseModel
 import com.example.chakmadictionary.utils.getCurrentTime
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -81,7 +73,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
          viewModelScope.launch {
              _myWord.value=dataSource.getWordById(intent?.dataString?.toInt())
              handleVisibility()
-             _bookmarkState.value=dataSource.getBookmarkById(_myWord.value?.wordId)
+             _bookmarkState.value=dataSource.getBookmarkByWord(_myWord.value?.word)
 
              //Insert history item
              val hWord=HistoryWord(_myWord.value?.wordId,_myWord.value?.word, getCurrentTime())
@@ -98,7 +90,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
             _myWord.value=dataSource.getWord(word)
             Timber.i(_myWord.value.toString())
             handleVisibility()
-            _bookmarkState.value=dataSource.getBookmarkById(_myWord.value?.wordId)
+            _bookmarkState.value=dataSource.getBookmarkByWord(_myWord.value?.word)
             //insert history item
             //Will not add history if its coming from the history fragment or if the query word is not found
             if(from!=0 && _myWord.value!=null){

@@ -56,8 +56,8 @@ interface WordsDao {
     @Query("SELECT*FROM bookmark_table ORDER BY time DESC LIMIT :limit")
      fun getAllBookmarks(limit: Int=20):LiveData<List<BookmarkWord>>
 
-    @Query("SELECT EXISTS(SELECT*FROM bookmark_table WHERE wordId=:id)")
-     suspend fun getBookmarkById(id:Long?):Boolean
+    @Query("SELECT EXISTS(SELECT*FROM bookmark_table WHERE word=:wordString)")
+     suspend fun getBookmarkByWord(wordString:String?):Boolean
 
     @Insert(entity = BookmarkWord::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBookmark(word:BookmarkWord)

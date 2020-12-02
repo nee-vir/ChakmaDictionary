@@ -62,5 +62,10 @@
     <fragment
         android:id="@+id/mySettingsFragment"
         android:name="com.example.chakmadictionary.ui.settings.MySettingsFragment"
-        android:label="Settings" />
+        android:label="Settings" >
+        <action
+            android:id="@+id/action_mySettingsFragment_to_definitionFragment"
+            app:destination="@id/definitionFragment"
+            app:popUpTo="@id/welcomeFragment" />
+    </fragment>
 </navigation>

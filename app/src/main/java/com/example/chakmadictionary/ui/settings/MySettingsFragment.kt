@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.example.chakmadictionary.R
@@ -12,6 +14,7 @@ import com.example.chakmadictionary.database.WordsDatabase
 import com.example.chakmadictionary.network.NetworkObjectContainer
 import com.example.chakmadictionary.network.NetworkWord
 import com.example.chakmadictionary.network.asDatabaseModel
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,6 +33,8 @@ class MySettingsFragment :PreferenceFragmentCompat(),Preference.OnPreferenceClic
             coroutineScope.launch {
                 retrieveWordsAndStore()
                 Timber.i("Words retrived and stored")
+                Snackbar.make(requireView(),"Successfully downloaded latest resources",Snackbar.LENGTH_SHORT).show()
+
             }
         return true
     }
@@ -58,6 +63,7 @@ class MySettingsFragment :PreferenceFragmentCompat(),Preference.OnPreferenceClic
             Timber.d("Error getting documents : $it")
         }
     }
+
 
 
 

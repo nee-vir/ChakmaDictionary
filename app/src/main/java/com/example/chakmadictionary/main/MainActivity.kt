@@ -78,8 +78,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -108,8 +106,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         searchView.setOnQueryTextFocusChangeListener { v, hasFocus -> definitionViewModel.loaded() }
-
-
 
         return true
     }
@@ -143,6 +139,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.welcomeFragment -> navController.navigate(R.id.action_welcomeFragment_to_definitionFragment)
 
                 R.id.aboutFragment -> navController.navigate(R.id.action_aboutFragment_to_definitionFragment)
+
+                R.id.mySettingsFragment -> navController.navigate(R.id.action_mySettingsFragment_to_definitionFragment)
 
             }
         }
