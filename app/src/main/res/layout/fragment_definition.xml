@@ -8,12 +8,15 @@
             name="definitionViewModel"
             type="com.sonees.chakmadictionary.ui.DefinitionViewModel" />
     </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/definationLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusableInTouchMode="true"
-        android:id="@+id/definationLayout"
         tools:context=".ui.DefinationFragment">
 
 
@@ -23,14 +26,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:button="@drawable/bookmark_selector"
-            tools:text="Bookmark Word"
             android:onClick="@{()->definitionViewModel.onBookmark(definitionViewModel.myWord.wordId,definitionViewModel.myWord.word)}"
             app:checkboxState="@{definitionViewModel.bookMarkState}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:text="Bookmark Word"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/wordText"
@@ -39,16 +42,16 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:text="@{definitionViewModel.myWord.word}"
-            tools:text="Sobdo"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/bookmarkCheckbox"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:text="Sobdo"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/englishLabel"
@@ -56,13 +59,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:text="@string/english_label"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wordText" />
+            app:layout_constraintTop_toBottomOf="@+id/wordText"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/translationText"
@@ -70,14 +73,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
-            tools:text="Word"
             android:text="@{definitionViewModel.myWord.translation}"
             android:textSize="25sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/englishLabel"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/englishLabel" />
+            app:layout_constraintStart_toEndOf="@+id/englishLabel"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:text="Word"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/definitionLabel"
@@ -85,30 +88,30 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            android:text="@string/definition_label_string"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="@string/definition_label_string"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/englishLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/englishLabel"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/definitionText"
+            definitionFormat="@{definitionViewModel.myWord.definition}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
-            tools:text="I am good at thiss I am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thiss"
             android:textSize="18sp"
-            definitionFormat="@{definitionViewModel.myWord.definition}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/definitionLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/definitionLabel"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:text="I am good at thiss I am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thissI am good at thiss"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/englishExampleLabel"
@@ -116,13 +119,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:text="@string/example_in_english_string"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/definitionText" />
+            app:layout_constraintTop_toBottomOf="@+id/definitionText"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/englishExampleText"
@@ -131,27 +134,29 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:text="@{definitionViewModel.myWord.example}"
-            tools:text="This is an example to demonstrate the usage of the word and I hope you find this word useful"
-            app:layout_constraintEnd_toEndOf="parent"
             android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/englishExampleLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/englishExampleLabel"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:text="This is an example to demonstrate the usage of the word and I hope you find this word useful"
+            tools:visibility="visible" />
+
         <TextView
             android:id="@+id/chakmaExampleLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:text="@string/example_in_chakma_string"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/englishExampleText" />
+            app:layout_constraintTop_toBottomOf="@+id/englishExampleText"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:visibility="visible" />
+
         <TextView
             android:id="@+id/chakmaExampleText"
             android:layout_width="0dp"
@@ -159,14 +164,14 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            tools:visibility="visible"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:text="@{definitionViewModel.myWord.example2}"
-            tools:text="This is an example to demonstrate the usage of the word and I hope you find this word useful"
-            app:layout_constraintEnd_toEndOf="parent"
             android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chakmaExampleLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/chakmaExampleLabel"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:text="This is an example to demonstrate the usage of the word and I hope you find this word useful"
+            tools:visibility="visible" />
 
 
         <ImageView
@@ -179,10 +184,11 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone"
-            app:wordNotFoundViewVisibility="@{definitionViewModel.wordNotFound}"
             app:layout_constraintVertical_bias="0.274"
-            app:srcCompat="@drawable/word_not_found" />
+            app:srcCompat="@drawable/word_not_found"
+            app:wordNotFoundViewVisibility="@{definitionViewModel.wordNotFound}"
+            tools:visibility="gone" />
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
@@ -198,14 +204,14 @@
             android:id="@+id/synonymsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
             android:layout_marginStart="24dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:layout_marginTop="24dp"
             android:text="@string/synonyms_text"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chakmaExampleText" />
+            app:layout_constraintTop_toBottomOf="@+id/chakmaExampleText"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}" />
 
         <TextView
             android:id="@+id/synonymsText"
@@ -214,13 +220,42 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
-            android:textSize="18sp"
-            tools:text="Haha, lol, ehehehe"
             android:text="@{definitionViewModel.myWord.synonyms}"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/synonymsLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/synonymsLabel"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            tools:text="Haha, lol, ehehehe" />
+
+
+        <TextView
+            android:id="@+id/imageExampleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Images:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/synonymsText"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}" />
+
+        <ImageView
+            android:id="@+id/imageExample"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            setExampleImage="@{definitionViewModel.myWord.imageUrl}"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageExampleLabel"
+            tools:srcCompat="@raw/apple_image" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

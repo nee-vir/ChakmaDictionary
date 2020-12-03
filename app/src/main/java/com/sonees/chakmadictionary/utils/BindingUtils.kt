@@ -5,6 +5,9 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.Glide
+import timber.log.Timber
 
 @BindingAdapter("checkboxState")
 fun setCheckboxState(checkBox: CheckBox,state: Boolean=false){
@@ -54,6 +57,21 @@ fun formatDefinition(textView: TextView,definition:String?){
         textView.text=newString
     }
 
+}
+
+
+@BindingAdapter("setExampleImage")
+fun setExampleImage(imageView: ImageView,imageUrl:String?){
+    val circularProgressDrawable = CircularProgressDrawable(imageView.context)
+    circularProgressDrawable.strokeWidth = 5f
+    circularProgressDrawable.centerRadius = 30f
+    circularProgressDrawable.start()
+    if(!imageUrl.isNullOrEmpty()){
+        Timber.i("Image url Not empty + $imageUrl")
+        Glide.with(imageView.context)
+            .load(imageUrl)
+            .into(imageView)
+    }
 }
 
 
