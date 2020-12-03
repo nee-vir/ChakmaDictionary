@@ -6,7 +6,7 @@
     <data>
         <variable
             name="bookmarkViewModel"
-            type="com.example.chakmadictionary.ui.bookmark.BookmarkViewModel" />
+            type="com.sonees.chakmadictionary.ui.bookmark.BookmarkViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -20,7 +20,6 @@
         app:layout_constrainedHeight="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/guideline8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +30,8 @@
         android:id="@+id/bookmarkNotFoundImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
+        app:layout_constrainedHeight="true"
         android:visibility="gone"
         android:contentDescription="@string/no_history_items_found_content_desc"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,12 +49,14 @@
         android:layout_marginTop="12dp"
         android:clickable="true"
         android:contentDescription="@string/deletes_the_entire_history_description"
+        android:focusable="true"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:srcCompat="@drawable/ic_baseline_delete_24"
-        android:focusable="true" />
+        app:srcCompat="@drawable/ic_baseline_delete_24" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -63,9 +66,11 @@
         android:layout_marginEnd="411dp"
         android:layout_marginBottom="99dp"
         android:orientation="horizontal"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="632dp"
+        app:layout_constraintGuide_begin="654dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,15 +78,31 @@
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constrainedWidth="true"
+        app:layout_constrainedHeight="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id"
         app:layout_constraintEnd_toStartOf="@+id/clearBookmarkButton"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bookmarkList"/>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constrainedHeight="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        app:layout_constraintEnd_toStartOf="@+id/clearBookmarkButton"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

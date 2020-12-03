@@ -6,7 +6,7 @@
     <data>
         <variable
             name="definitionViewModel"
-            type="com.example.chakmadictionary.ui.DefinitionViewModel" />
+            type="com.sonees.chakmadictionary.ui.DefinitionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

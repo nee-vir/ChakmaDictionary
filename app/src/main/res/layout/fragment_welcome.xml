@@ -5,7 +5,7 @@
     <data>
         <variable
             name="defViewModel"
-            type="com.example.chakmadictionary.ui.DefinitionViewModel" />
+            type="com.sonees.chakmadictionary.ui.DefinitionViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
