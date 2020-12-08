@@ -74,6 +74,13 @@ fun setExampleImage(imageView: ImageView,imageUrl:String?){
     }
 }
 
+@BindingAdapter("visibilityIfEmpty")
+fun visibilityIfEmpty(view:View, text:String?){
+    if(text.isNullOrEmpty()||text.isNullOrBlank()||text=="empty"||text=="null"){
+        view.visibility=View.GONE
+    }
+}
+
 
 
 

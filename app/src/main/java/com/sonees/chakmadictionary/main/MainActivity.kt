@@ -59,6 +59,10 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration= AppBarConfiguration(navController.graph,drawerLayout)
         setupActionBarWithNavController(navController,appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.menu.findItem(R.id.shareApp).setOnMenuItemClickListener {
+            shareMyApp()
+            return@setOnMenuItemClickListener true
+        }
         navView.menu.findItem(R.id.exit_item).setOnMenuItemClickListener {
             this.finish()
             return@setOnMenuItemClickListener true
@@ -149,6 +153,16 @@ class MainActivity : AppCompatActivity() {
             "3" -> setTheme(R.style.Theme_ChakmaDictionary_DarkMode)
             "4" -> setTheme(R.style.Theme_ChakmaDictionary_Blue)
         }
+    }
+
+    private fun shareMyApp(){
+        val sendIntent:Intent=Intent().apply {
+            action=Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id=com.sonees.chakmadictionary")
+            type="text/plain"
+        }
+        val shareIntent=Intent.createChooser(sendIntent,null)
+        startActivity(shareIntent)
     }
 
 

@@ -18,6 +18,9 @@
         android:id="@+id/aboutFragment"
         android:title="@string/about_drawer"
         android:icon="@drawable/ic_baseline_article_24"/>
+    <item android:id="@+id/shareApp"
+        android:title="Share"
+        android:icon="@drawable/ic_baseline_share_24"/>
     <item
         android:id="@+id/mySettingsFragment"
         android:icon="@drawable/ic_baseline_settings_24"

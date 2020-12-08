@@ -11,11 +11,9 @@ import com.sonees.chakmadictionary.network.NetworkWord
 import com.sonees.chakmadictionary.network.asDatabaseModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import timber.log.Timber
+import java.lang.Exception
 
 class MySettingsFragment :PreferenceFragmentCompat(),Preference.OnPreferenceClickListener{
 
@@ -23,16 +21,25 @@ class MySettingsFragment :PreferenceFragmentCompat(),Preference.OnPreferenceClic
     private lateinit var db: WordsDao
     private val job= Job()
     private val coroutineScope= CoroutineScope(Dispatchers.IO+job)
+    private var isRetrieved=false
 
     override fun onPreferenceClick(preference: Preference?): Boolean {
-            coroutineScope.launch {
-                retrieveWordsAndStore()
-                Timber.i("Words retrived and stored")
-                Snackbar.make(requireView(),"Successfully downloaded latest resources",Snackbar.LENGTH_SHORT).show()
-
+        if(!isRetrieved){ //To prevent the app from crashing when clicked multiple times very fast
+            isRetrieved=true
+            if(preference?.key=="downloadData"){
+                coroutineScope.launch {
+                    retrieveWordsAndStore()
+                    Timber.i("Words retrived and stored")
+                    Snackbar.make(requireView(),"Successfully downloaded latest resources",Snackbar.LENGTH_SHORT).show()
+                }
             }
+        }
+
+
         return true
     }
+
+
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences,rootKey)
@@ -45,22 +52,26 @@ class MySettingsFragment :PreferenceFragmentCompat(),Preference.OnPreferenceClic
 
     private suspend fun retrieveWordsAndStore(){
         val fs= FirebaseFirestore.getInstance()
-        fs.collection("words").get().addOnSuccessListener { result ->
-            for(document in result){
-                val obj=document.toObject(NetworkWord::class.java)
-                list.add(obj)
+
+            fs.collection("words").get().addOnSuccessListener { result ->
+                for(document in result){
+                    val obj=document.toObject(NetworkWord::class.java)
+                    list.add(obj)
+                }
+                coroutineScope.launch {
+                    val wordsContainer= NetworkObjectContainer(list)
+                    db.insertAll(wordsContainer.asDatabaseModel())
+                }
+            }.addOnFailureListener {
+                Timber.d("Error getting documents : $it")
+            }.addOnCompleteListener {
+                isRetrieved=false
             }
-            coroutineScope.launch {
-                val wordsContainer= NetworkObjectContainer(list)
-                db.insertAll(wordsContainer.asDatabaseModel())
-            }
-        }.addOnFailureListener {
-            Timber.d("Error getting documents : $it")
         }
+
     }
 
 
 
 
-}
 

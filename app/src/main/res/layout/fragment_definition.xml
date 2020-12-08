@@ -134,7 +134,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:text="@{definitionViewModel.myWord.example}"
+            definitionFormat="@{definitionViewModel.myWord.example}"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -164,7 +164,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:text="@{definitionViewModel.myWord.example2}"
+            definitionFormat="@{definitionViewModel.myWord.example2}"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -209,9 +209,11 @@
             android:text="@string/synonyms_text"
             android:textSize="20sp"
             android:textStyle="bold"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            app:visibilityIfEmpty="@{definitionViewModel.myWord.synonyms}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chakmaExampleText"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}" />
+             />
 
         <TextView
             android:id="@+id/synonymsText"
@@ -222,10 +224,12 @@
             android:layout_marginEnd="24dp"
             android:text="@{definitionViewModel.myWord.synonyms}"
             android:textSize="18sp"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            app:visibilityIfEmpty="@{definitionViewModel.myWord.synonyms}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/synonymsLabel"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+
             tools:text="Haha, lol, ehehehe" />
 
 
@@ -235,20 +239,24 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:text="Images:"
+            android:text="@string/images_label"
+            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            app:visibilityIfEmpty="@{definitionViewModel.myWord.imageUrl}"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/synonymsText"
-            app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}" />
+             />
 
         <ImageView
+            android:contentDescription="@string/images_of_items_corresponding_to_the_word"
             android:id="@+id/imageExample"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            setExampleImage="@{definitionViewModel.myWord.imageUrl}"
+            app:setExampleImage="@{definitionViewModel.myWord.imageUrl}"
             app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+            app:visibilityIfEmpty="@{definitionViewModel.myWord.imageUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
