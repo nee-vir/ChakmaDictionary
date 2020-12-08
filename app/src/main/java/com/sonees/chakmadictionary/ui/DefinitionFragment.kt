@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
+import com.google.android.gms.ads.AdRequest
 import com.sonees.chakmadictionary.database.WordsDatabase
 import com.sonees.chakmadictionary.databinding.FragmentDefinitionBinding
 import kotlinx.coroutines.*
@@ -75,6 +76,7 @@ class DefinationFragment : Fragment() {
         })
 
         setHasOptionsMenu(true)
+        binding.adViewD.loadAd(AdRequest.Builder().build())
 
         return binding.root
     }
