@@ -5,7 +5,6 @@
 
     <PreferenceCategory android:title="Appearances">
         <ListPreference
-            android:defaultValue="1"
             android:entries="@array/themeArrayEntries"
             android:entryValues="@array/themeArrayValues"
             android:key="myTheme"
@@ -44,6 +43,17 @@
             android:entryValues="@array/ItemsArrayValues"
             android:key="bookmarkItemLimit"
             android:title="Bookmark Item Limit" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Word Quiz Settings">
+
+        <ListPreference android:title="Quiz Category"
+            android:summary="Choose a category for the word quiz"
+            android:key="quizCategory"
+            android:entries="@array/quizCategoryEntries"
+            android:entryValues="@array/quizCategoryValues"
+            android:defaultValue="0"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Database">

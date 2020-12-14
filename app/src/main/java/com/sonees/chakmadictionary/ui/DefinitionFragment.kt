@@ -78,6 +78,7 @@ class DefinationFragment : Fragment() {
         setHasOptionsMenu(true)
         binding.adViewD.loadAd(AdRequest.Builder().build())
 
+
         return binding.root
     }
 
@@ -99,6 +100,10 @@ class DefinationFragment : Fragment() {
        binding.synonymsText.textSize=sizeOfFont.toFloat()
 
    }
+
+
+
+
 
 
 }

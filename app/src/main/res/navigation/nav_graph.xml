@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_definitionFragment"
             app:destination="@id/definitionFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_suggestActivity"
+            app:destination="@id/suggestActivity" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -68,4 +71,9 @@
             app:destination="@id/definitionFragment"
             app:popUpTo="@id/welcomeFragment" />
     </fragment>
+    <activity
+        android:id="@+id/suggestActivity"
+        android:name="com.sonees.chakmadictionary.ui.welcome.SuggestActivity"
+        android:label="activity_suggest"
+        tools:layout="@layout/activity_suggest" />
 </navigation>

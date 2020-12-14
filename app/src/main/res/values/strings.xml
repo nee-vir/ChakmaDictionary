@@ -31,7 +31,6 @@
     <string name="deletes_the_entire_history_description">Deletes the entire history</string>
 
 
-
     //DefinitionFragment
     <string name="english_label">English:</string>
     <string name="definition_label_string">Definition:</string>
@@ -82,11 +81,24 @@
         <item>4</item>
     </string-array>
 
+    <string-array name="quizCategoryEntries">
+        <item>All</item>
+        <item>History</item>
+        <item>Bookmark</item>
+    </string-array>
+    <string-array name="quizCategoryValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
 
     <string name="banner_ad_unit_id">ca-app-pub-7471620086159535/8843483526</string>
     <string name="banner_ad_unit_id_2">ca-app-pub-7471620086159535/2303245463</string>
     <string name="images_of_items_corresponding_to_the_word">Images of items corresponding to the word</string>
     <string name="images_label">Images:</string>
+    <string name="eg_there_is_a_mistake_in_the_word_love_the_right_translation_is_hospana">eg: there is a mistake in the word \'love\', the right translation is hospana</string>
 
 
 </resources>

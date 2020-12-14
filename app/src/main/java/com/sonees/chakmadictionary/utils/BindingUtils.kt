@@ -7,7 +7,9 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.sonees.chakmadictionary.database.DatabaseWord
 import timber.log.Timber
+import kotlin.random.Random
 
 @BindingAdapter("checkboxState")
 fun setCheckboxState(checkBox: CheckBox,state: Boolean=false){
@@ -79,6 +81,18 @@ fun visibilityIfEmpty(view:View, text:String?){
     if(text.isNullOrEmpty()||text.isNullOrBlank()||text=="empty"||text=="null"){
         view.visibility=View.GONE
     }
+}
+
+@BindingAdapter("quizDefFormat")
+fun formatQuiz(textView: TextView,definition:String?){
+    //If you don't provide null check ,it will crash
+    val list=definition?.split("###")
+    if(list!=null){
+        val size=list.size
+        val random=(list.indices).random()
+        textView.text=list[random]
+    }
+
 }
 
 

@@ -14,6 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.SuggestTheme.NoActionBar" parent="Theme.AppCompat.DayNight.DialogWhenLarge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor" tools:targetApi="1">@color/primaryDarkColor</item>
+    </style>
+
     <style name="Theme.ChakmaDictionary.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

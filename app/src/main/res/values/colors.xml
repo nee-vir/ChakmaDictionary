@@ -63,4 +63,8 @@
     <color name="secondaryTextColorBlue">#000000</color>
 
 
+    <color name="wrong_red">#F44336</color>
+    <color name="correct_green">#4CAF50</color>
+
+
 </resources>

@@ -58,6 +58,7 @@ class MySettingsFragment :PreferenceFragmentCompat(),Preference.OnPreferenceClic
                     val obj=document.toObject(NetworkWord::class.java)
                     list.add(obj)
                 }
+                Timber.i(list.size.toString())
                 coroutineScope.launch {
                     val wordsContainer= NetworkObjectContainer(list)
                     db.insertAll(wordsContainer.asDatabaseModel())
