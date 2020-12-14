@@ -40,7 +40,7 @@ class DefinitionViewModel(application: Application,private val dataSource:WordsD
 
 
 
-    //Data is retrived from firestore and stored to the database from the application class
+    //Data is retrived from firestore and stored in the local database from the application class
 
     /*private suspend  fun retrieveWordsFromFirebase(){
         val db=FirebaseFirestore.getInstance()

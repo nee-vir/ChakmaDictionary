@@ -7,6 +7,7 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import androidx.preference.PreferenceManager
 import com.sonees.chakmadictionary.database.WordsDao
 import com.sonees.chakmadictionary.database.WordsDatabase
 import timber.log.Timber
@@ -61,6 +62,11 @@ class MyCustomSuggestionProvider : ContentProvider() {
             Timber.i("Empty Query")
             null
         } else{
+            /*val sharedPreferences=PreferenceManager.getDefaultSharedPreferences(context)
+            if(sharedPreferences.getString("searchAppearancePriority","0")=="0"){
+                val suggestTextString="suggest_text_1"
+                val suggestTextString2="suggest_text_2"
+            }*/
             val cursor=dataSource.getSuggestionWord(query)
             Timber.i(cursor?.getColumnName(0))
             cursor

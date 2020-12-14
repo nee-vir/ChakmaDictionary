@@ -1,6 +1,7 @@
 package com.sonees.chakmadictionary.ui.welcome
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,9 +11,8 @@ import com.sonees.chakmadictionary.database.DatabaseWord
 import com.sonees.chakmadictionary.database.WordsDao
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import kotlin.random.Random
 
-class WelcomeViewModel(application: Application,private val dataSource:WordsDao) :AndroidViewModel(application){
+class WelcomeViewModel(private val app: Application, private val dataSource:WordsDao) :AndroidViewModel(app){
 
      private lateinit var wordList:List<DatabaseWord>
      private val randomWords= mutableListOf<DatabaseWord>()
@@ -24,7 +24,6 @@ class WelcomeViewModel(application: Application,private val dataSource:WordsDao)
     val answerList:LiveData<MutableList<String>>
     get() = _answerList
 
-    private val randomNumbers= mutableListOf<Int>()
 
     var answerIndex=0;
 
@@ -34,40 +33,83 @@ class WelcomeViewModel(application: Application,private val dataSource:WordsDao)
 
     var myScore=0
 
-    private var numberExists=false
+    private val _responseVisibility=MutableLiveData<Int>()
+    val responseVisibility:LiveData<Int>
+    get() = _responseVisibility
+
+    private val _radioGroupVisibility=MutableLiveData<Int>()
+    val radioGroupVisibility:LiveData<Int>
+    get() = _radioGroupVisibility
 
 //    var answer=""
-
+    private val _quizResponse=MutableLiveData<String>()
+    val quizResponse:LiveData<String>
+    get() = _quizResponse
     init {
+       loadQuiz()
+    }
+
+     fun loadQuiz(){
         _score.value=0
-        val sharedPreferences=PreferenceManager.getDefaultSharedPreferences(application)
-        val category=sharedPreferences.getString("quizCategory","0")
-        viewModelScope.launch {
-            wordList=dataSource.getAllWords()
-            if(wordList.isNotEmpty())
-            getRandomWords()
+        val sharedPreferences=PreferenceManager.getDefaultSharedPreferences(app)
+        when(sharedPreferences.getString("quizCategory","0")){
+            "0" -> viewModelScope.launch {
+                wordList=dataSource.getAllWords()
+                if(wordList.isNotEmpty()&&wordList.size>=4){
+                    _responseVisibility.value= View.GONE
+                    _radioGroupVisibility.value=View.VISIBLE
+                    getRandomWords()
+                } else{
+                    _quizResponse.value="Go to the settings screen and download the resources to play the Quiz. Comeback and Tap Here to Begin the Quiz."
+                    _responseVisibility.value= View.VISIBLE
+                    _radioGroupVisibility.value=View.INVISIBLE
+                }
+
+            }
+            "1" -> viewModelScope.launch {
+                wordList=dataSource.getHistoryFromWords()
+                if(wordList.isNotEmpty()&&wordList.size>=4){
+                    _responseVisibility.value= View.GONE
+                    _radioGroupVisibility.value=View.VISIBLE
+                    getRandomWords()
+                } else{
+                    _quizResponse.value="You don't have history. Change the Quiz Category to \"All\" from the settings screen. Comeback and Tap Here to Begin the Quiz."
+                    _responseVisibility.value=View.VISIBLE
+                    _radioGroupVisibility.value=View.INVISIBLE
+                }
+
+            }
+            "2" -> viewModelScope.launch {
+                wordList=dataSource.getBookMarksFromWords()
+                if(wordList.isNotEmpty()&&wordList.size>=4){
+                    _responseVisibility.value= View.GONE
+                    _radioGroupVisibility.value=View.VISIBLE
+                    getRandomWords()
+                } else{
+                    _quizResponse.value="You don't have bookmarks. Change the Quiz Category to \"All\" from the settings screen. Comeback and Tap Here to Begin the Quiz."
+                    _responseVisibility.value=View.VISIBLE
+                    _radioGroupVisibility.value=View.INVISIBLE
+                }
+
+            }
         }
-
-
     }
 
      fun getRandomWords(){
         randomWords.clear()
-         randomNumbers.clear()
         _answerList.value= mutableListOf<String>()
         val listSize=wordList.size
          Timber.i(listSize.toString())
+         var randomIndex=(0 until listSize).random()
         for(i in 1..4){
-            val randomIndex=(0 until listSize).random()
-            checkIfItExists(randomIndex)
-            if(numberExists){
-//                randomIndex=(0 until listSize).random()
-                randomNumbers.add(randomIndex/2)
-                randomWords.add(wordList[randomIndex/2])
-            } else{
-                randomNumbers.add(randomIndex)
+            if(randomIndex==listSize-1){
                 randomWords.add(wordList[randomIndex])
+                randomIndex=0
+            } else{
+                randomWords.add(wordList[randomIndex])
+                randomIndex++
             }
+
 //            val randomIndex=Random.nextInt(listSize-1)
         }
         Timber.i(randomWords.toString())
@@ -99,11 +141,5 @@ class WelcomeViewModel(application: Application,private val dataSource:WordsDao)
         _score.value=0
     }
 
-    private fun checkIfItExists(random:Int){
-        for (i in randomNumbers){
-            numberExists = i==random
-        }
-
-    }
 
 }

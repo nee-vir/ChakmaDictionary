@@ -92,6 +92,15 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="searchPriorityEntries">
+        <item>English</item>
+        <item>Chakma</item>
+    </string-array>
+    <string-array name="searchPriorityValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
 
 
     <string name="banner_ad_unit_id">ca-app-pub-7471620086159535/8843483526</string>

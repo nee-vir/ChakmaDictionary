@@ -34,3 +34,10 @@ fun NetworkObjectContainer.asDatabaseModel():List<DatabaseWord>{
 
 data class Quote(val quote:String?=null,
                  val author:String?=null)
+
+
+data class SuggestionObject(
+                      val translation:String?=null,
+                      val word:String?=null,
+                      val definition: String?=null,
+                      val comment:String?=null)

@@ -17,7 +17,7 @@ class HistoryDiffCallback : DiffUtil.ItemCallback<HistoryWord>(){
 
 class BookmarkDiffCallback : DiffUtil.ItemCallback<BookmarkWord>(){
     override fun areItemsTheSame(oldItem: BookmarkWord, newItem: BookmarkWord): Boolean {
-        return oldItem.wordId==newItem.wordId
+        return oldItem.bWordId==newItem.bWordId
     }
 
     override fun areContentsTheSame(oldItem: BookmarkWord, newItem: BookmarkWord): Boolean {

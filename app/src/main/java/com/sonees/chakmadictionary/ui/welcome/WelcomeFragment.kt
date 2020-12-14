@@ -58,7 +58,7 @@ class WelcomeFragment : Fragment() {
         }
 
         welcomeViewModel.quizWord.observe(viewLifecycleOwner, Observer {
-            binding.quizFragment.quizQuestion.questionFormat(it.word,it.translation)
+            binding.quizFragment.quizQuestion.questionFormat(it.word,it.translation,act.application)
         })
 
 

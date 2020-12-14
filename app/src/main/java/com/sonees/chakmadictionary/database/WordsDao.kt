@@ -20,6 +20,11 @@ interface WordsDao {
     @Query("SELECT * FROM words_table WHERE wordId=:id")
     suspend fun getById(id:Long): DatabaseWord?
 
+    @Query("SELECT * FROM words_table INNER JOIN history_table WHERE wordId=hWordId")
+    suspend fun getHistoryFromWords():List<DatabaseWord>
+
+    @Query("SELECT * FROM words_table INNER JOIN bookmark_table WHERE wordId=bWordId")
+    suspend fun getBookMarksFromWords():List<DatabaseWord>
 
     //ContentProvider suggestion table queries
     //The column alias names has to be the same as these or the system will not understand
@@ -61,7 +66,7 @@ interface WordsDao {
     @Insert(entity = BookmarkWord::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBookmark(word:BookmarkWord)
 
-    @Query("DELETE FROM bookmark_table where wordId=:id")
+    @Query("DELETE FROM bookmark_table where bWordId=:id")
     suspend fun deleteBookmark(id:Long?)
 
     @Query("DELETE FROM bookmark_table")

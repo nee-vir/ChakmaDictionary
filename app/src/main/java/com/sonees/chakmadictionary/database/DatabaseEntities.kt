@@ -21,7 +21,7 @@ data class DatabaseWord constructor(
 
 @Entity(tableName = "history_table")
 data class HistoryWord constructor(
-        val wordId:Long?=0L,
+        val hWordId:Long?=0L,
         val word: String?=null,
         val searchTime: String?=null
 ){
@@ -33,7 +33,7 @@ data class HistoryWord constructor(
 @Entity(tableName = "bookmark_table")
 data class BookmarkWord constructor(
         @PrimaryKey
-        val wordId:Long=0L,
+        val bWordId:Long=0L,
         val word: String?=null,
         val time: Long?=0L
 )
