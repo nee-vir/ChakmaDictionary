@@ -31,6 +31,10 @@ interface WordsDao {
     @Query("SELECT wordId AS _id, word AS suggest_text_1, translation AS suggest_text_2, wordId AS suggest_intent_data FROM words_table WHERE word LIKE :name OR translation LIKE :name")
     fun getSuggestionWord(name:String?):Cursor?
 
+    //For English word to be on top of chakma word
+    @Query("SELECT wordId AS _id, word AS suggest_text_2, translation AS suggest_text_1, wordId AS suggest_intent_data FROM words_table WHERE word LIKE :name OR translation LIKE :name")
+    fun getSuggestionWord2(name:String?):Cursor?
+
     @Query("DELETE FROM words_table WHERE word= :name OR translation=:name")
     fun deleteWords(name:String?):Int
 

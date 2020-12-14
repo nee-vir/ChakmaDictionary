@@ -62,14 +62,17 @@ class MyCustomSuggestionProvider : ContentProvider() {
             Timber.i("Empty Query")
             null
         } else{
-            /*val sharedPreferences=PreferenceManager.getDefaultSharedPreferences(context)
+            val sharedPreferences=PreferenceManager.getDefaultSharedPreferences(context)
             if(sharedPreferences.getString("searchAppearancePriority","0")=="0"){
-                val suggestTextString="suggest_text_1"
-                val suggestTextString2="suggest_text_2"
-            }*/
-            val cursor=dataSource.getSuggestionWord(query)
-            Timber.i(cursor?.getColumnName(0))
-            cursor
+                val cursor=dataSource.getSuggestionWord2(query)
+                Timber.i(cursor?.getColumnName(0))
+                cursor
+            } else{
+                val cursor=dataSource.getSuggestionWord(query)
+                Timber.i(cursor?.getColumnName(0))
+                cursor
+            }
+
         }
 
 
