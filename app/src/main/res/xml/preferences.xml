@@ -11,7 +11,7 @@
             android:summary="Click here to select a theme"
             android:title="Theme" />
         <ListPreference
-            android:title="Search Appearance Priority"
+            android:title="Set Word Appearance Priority"
             android:entries="@array/searchPriorityEntries"
             android:entryValues="@array/searchPriorityValues"
             android:key="searchAppearancePriority"

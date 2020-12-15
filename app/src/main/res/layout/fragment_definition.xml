@@ -164,6 +164,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/englishExampleText"
                     app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+                    app:visibilityIfEmpty="@{definitionViewModel.myWord.example2}"
                     tools:visibility="visible" />
 
                 <TextView
@@ -179,6 +180,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/chakmaExampleLabel"
                     app:wordNotFoundVisibility="@{definitionViewModel.wordNotFound}"
+                    app:visibilityIfEmpty="@{definitionViewModel.myWord.example2}"
                     tools:text="This is an example to demonstrate the usage of the word and I hope you find this word useful"
                     tools:visibility="visible" />
 

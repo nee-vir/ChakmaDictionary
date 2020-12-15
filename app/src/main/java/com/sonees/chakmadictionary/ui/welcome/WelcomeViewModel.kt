@@ -60,7 +60,7 @@ class WelcomeViewModel(private val app: Application, private val dataSource:Word
                     _radioGroupVisibility.value=View.VISIBLE
                     getRandomWords()
                 } else{
-                    _quizResponse.value="Go to the settings screen and download the resources to play the Quiz. Comeback and Tap Here to Begin the Quiz."
+                    _quizResponse.value="Go to the settings screen and download the resources to play the Quiz. After downloading, comeback and TAP HERE to begin the quiz."
                     _responseVisibility.value= View.VISIBLE
                     _radioGroupVisibility.value=View.INVISIBLE
                 }
